@@ -14,7 +14,7 @@
 		</div>
 		<div class="panel-body">
 			<c:if test="${not empty message}">
-				<div class="alert alert-${alert}">
+				<div class="alert alert-${alert}" id="messageAndAlert">
 					<spring:message code="${message}" />
 				</div>
 			</c:if>
@@ -87,5 +87,8 @@
 			</form:form>
 		</div>
 	</div>
+<script>
+	$('#messageAndAlert').fadeOut(5000);
+</script>
 </body>
 </html>

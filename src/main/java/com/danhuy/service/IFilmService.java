@@ -14,4 +14,5 @@ public interface IFilmService {
 	long getTotalItem();
 	FilmDTO save(FilmDTO dto);
 	FilmDTO findById(Long id);
+	void delete(long[] ids);
 }

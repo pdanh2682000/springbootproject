@@ -20,6 +20,7 @@ public final class SystemConstants {
 	public static final String UPDATE_FILM_SUCCESS = "update_film_success";
 	public static final String EDIT_FILM_FAIL = "edit_film_fail";
 	public static final String GET_LIST_FILM_FAIL = "get_list_film_fail";
+	public static final String GET_LIST_CATEGORY_FAIL = "get_list_category_fail";
 	public static final String GET_INFO_EDIT_FILM_FAIL = "get_info_edit_film_fail";
 	
 	public static final String ALERT_DANGER = "danger";
