@@ -3,11 +3,12 @@
 <%@ include file="/commons/taglib.jsp"%>
 <c:url var="filmAPI" value="/api/film"/>
 <c:url var="filmURL" value="/admin/film/list"/>
+<c:url var="createFilmURL" value="./edit" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Danh sách Film</title>
+<title>Danh sách Thể loại</title>
 </head>
 <body>
 <c:if test="${not empty message}">
@@ -21,7 +22,6 @@
 				<h1 class="text-center" style="color: yellowgreen;">Films</h1>
 				<div class="dt-buttons btn-overlap btn-group" style="float: right; padding-bottom: 10px;">
 				
-					<c:url var="createFilmURL" value="./edit" />
 					
 					<a flag="info"
 						class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
@@ -44,33 +44,19 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
-					<th>All<input type="checkbox" onClick="checkAll(this)"></th>
-					<th>Tên film</th>
-					<th>Tác giả</th>
-					<th>Diễn viên</th>
-					<th>Nội dung</th>
-					<th>Mô tả ngắn</th>
-					<th>Thể loại</th>
-					<th>Thời lượng</th>
-					<th>Năm sản xuất</th>
-					<th>Url</th>
+					<th><input type="checkbox" onClick="checkAll(this)"> All</th>
+					<th>Name</th>
+					<th>Code</th>
 					<th>Thao tác</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="item" items="${list_film.results}">
+				<c:forEach var="item" items="${list_category.results}">
 					<tr>
 						<td><input type="checkbox" id="checkbox_${item.id}"
 							value="${item.id}"></td>
-						<td>${item.title}</td>
-						<td>${item.actor}</td>
-						<td>${item.author}</td>
-						<td>${item.content}</td>
-						<td>${item.shortDescription}</td>
-						<td>${item.categoryName}</td>
-						<td>${item.filmLength}</td>
-						<td>${item.publishDate}</td>
-						<td>${item.url}</td>
+						<td>${item.name}</td>
+						<td>${item.code}</td>
 						<td style="text-align: center;">
 							<c:url var="updateFilmURL" value="./edit">
 								<c:param name="id" value="${item.id}"></c:param>

@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+<!-- sweet alert  -->
+<script src="<c:url value='/templates/admin/sweetalert/sweetalert2.min.js' />"></script>
+<link rel="stylesheet" href="<c:url value='/templates/admin/sweetalert/sweetalert2.min.css' />" />
 <style>
 	form .error {
 		color: yellow;

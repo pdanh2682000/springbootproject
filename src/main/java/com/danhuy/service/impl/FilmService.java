@@ -77,6 +77,7 @@ public class FilmService implements IFilmService {
 
 	@Override
 	public long getTotalItem() {
+		
 		return filmRepository.count();
 	}
 
@@ -89,14 +90,18 @@ public class FilmService implements IFilmService {
 		// update
 		if(dto.getId() != null) {
 			Optional<FilmEntity> oldFilmEntity = filmRepository.findById(dto.getId());
-			oldFilmEntity.get().setCategory(categoryEntity);
-			filmEntity = converter.toEntity(oldFilmEntity.get(), dto);
+			if(oldFilmEntity.isPresent()) {
+				if(dto.getUrl() == null || dto.getUrl().isEmpty())
+					dto.setUrl(oldFilmEntity.get().getUrl()); // set url from old
+				filmEntity = converter.toEntity(oldFilmEntity.get(), dto);
+			}
 		}
 		// create
 		else {
 			filmEntity = mapper.map(dto, FilmEntity.class);
-			filmEntity.setCategory(categoryEntity);
 		}
+		filmEntity.setPosterSlide(0); // default is poster content
+		filmEntity.setCategory(categoryEntity);
 		return mapper.map(filmRepository.save(filmEntity), FilmDTO.class);
 	}
 
@@ -104,9 +109,20 @@ public class FilmService implements IFilmService {
 	public FilmDTO findById(Long id) {
 		
 		Optional<FilmEntity> entity = filmRepository.findById(id);
-		FilmDTO dto = mapper.map(entity.get(), FilmDTO.class);
-		// custom convert
-		dto = converter.toDTO(dto, entity.get());
-		return dto;
+		if(entity.isPresent()) {
+			FilmDTO dto = mapper.map(entity.get(), FilmDTO.class);
+			// custom convert
+			dto = converter.toDTO(dto, entity.get());
+			return dto;
+		}
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public void delete(long[] ids) {
+		for(long id : ids) {
+			filmRepository.deleteById(id);
+		}
 	}
 }

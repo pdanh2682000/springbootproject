@@ -80,13 +80,12 @@ public class FilmController {
 			// create
 			if (id == null) {
 				mav.addObject(new FilmDTO());
-				mav.addObject("categories", categoryService.findAll());
 			}
 			// update
 			else {
 				mav.addObject(filmService.findById(id));
-				mav.addObject("categories", categoryService.findAll());
 			}
+			mav.addObject("categories", categoryService.findAll());
 
 			if (request.getParameter("message") != null && request.getParameter("alert") != null)
 				MessageUtils.setMessageAndAlertForView(request.getParameter("message"), request.getParameter("alert"),
@@ -105,10 +104,11 @@ public class FilmController {
 									@RequestParam(value = "file", required = false) MultipartFile file,
 									@Validated FilmDTO dto,
 									BindingResult result) {
-
+		
+		ModelAndView mav = null;
 		try {
 			if (result.hasErrors()) {
-				ModelAndView mav = new ModelAndView("/admin/film/edit");
+				mav = new ModelAndView("/admin/film/edit");
 				mav.addObject("categories", categoryService.findAll());
 				mav.addObject("message", SystemConstants.BINDING_FILM_ERROR);
 				mav.addObject("alert", SystemConstants.ALERT_DANGER);
@@ -116,33 +116,27 @@ public class FilmController {
 			}
 			
 			// upload file
-			String generatedFilename = null;
-			if(file != null)
-				generatedFilename = uploadFileService.storeFile(file);
+			if(file != null && !file.isEmpty()) {
+				String generatedFilename = uploadFileService.storeFile(file);
+				dto.setUrl(generatedFilename);
+			}
 			
 			// update
 			if (id != null) {
-				ModelAndView mav = new ModelAndView("redirect:/admin/film/edit?id=" + id);
+				mav = new ModelAndView("redirect:/admin/film/edit?id=" + id);
 				dto.setId(id);
-				if(file != null)
-					dto.setUrl(generatedFilename);
-				filmService.save(dto);
 				mav.addObject("message", SystemConstants.UPDATE_FILM_SUCCESS);
-				mav.addObject("alert", SystemConstants.ALERT_SUCCESS);
-				return mav;
 			}
 			// create
 			else {
-				ModelAndView mav = new ModelAndView("redirect:/admin/film/list");
-				if(file != null)
-					dto.setUrl(generatedFilename);
-				filmService.save(dto);
+				mav = new ModelAndView("redirect:/admin/film/list");
 				mav.addObject("message", SystemConstants.CREATE_FILM_SUCCESS);
-				mav.addObject("alert", SystemConstants.ALERT_SUCCESS);
-				return mav;
 			}
+			mav.addObject("alert", SystemConstants.ALERT_SUCCESS);
+			filmService.save(dto);
+			return mav;
 		} catch (Exception e) {
-			ModelAndView mav = new ModelAndView("redirect:/admin/film/list");
+			mav = new ModelAndView("redirect:/admin/film/list");
 			mav.addObject("message", SystemConstants.EDIT_FILM_FAIL);
 			mav.addObject("alert", SystemConstants.ALERT_DANGER);
 			return mav;
