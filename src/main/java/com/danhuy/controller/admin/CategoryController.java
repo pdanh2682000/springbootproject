@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,5 +43,35 @@ public class CategoryController {
 			mav.addObject("alert", SystemConstants.ALERT_DANGER);
 			return mav;
 		}
+	}
+	
+	@RequestMapping("/admin/category/add")
+	public ModelAndView addCategory() {
+		ModelAndView mav = new ModelAndView("admin/category/add");
+		mav.addObject(new CategoryDTO());
+		return mav;
+	}
+	
+	@RequestMapping(value = "/admin/category/add", method = RequestMethod.POST)
+	public ModelAndView doAddCategory(@Validated CategoryDTO dto, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+		try {
+			if(result.hasErrors()) {
+				mav = new ModelAndView("/admin/category/add");
+				mav.addObject("message", SystemConstants.BINDING_CATEGORY_ERROR);
+				mav.addObject("alert", SystemConstants.ALERT_DANGER);
+			}
+			if(!dto.getName().isEmpty() && !dto.getCode().isEmpty()) {
+				mav = new ModelAndView("redirect:/admin/category/list");
+				categoryService.save(dto);
+				mav.addObject("message", SystemConstants.CREATE_CATEGORY_SUCCESS);
+				mav.addObject("alert", SystemConstants.ALERT_SUCCESS);
+			}
+		} catch(Exception e) {
+			mav = new ModelAndView("redirect:/admin/category/list");
+			mav.addObject("message", SystemConstants.CREATE_CATEGORY_FAIL);
+			mav.addObject("alert", SystemConstants.ALERT_DANGER);
+		}
+		return mav;
 	}
 }

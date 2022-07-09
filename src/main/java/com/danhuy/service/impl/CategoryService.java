@@ -59,4 +59,11 @@ public class CategoryService implements ICategoryService {
 		return results;
 	}
 
+	@Override
+	public CategoryDTO save(CategoryDTO dto) {
+		
+		CategoryEntity entity = mapper.map(dto, CategoryEntity.class);
+		return mapper.map(categoryRepository.save(entity), CategoryDTO.class);
+	}
+
 }

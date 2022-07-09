@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/commons/taglib.jsp"%>
-<c:url var="filmAPI" value="/api/film"/>
-<c:url var="filmURL" value="/admin/film/list"/>
+
+<c:url var="FilmAPI" value="/api/film"/>
+<c:url var="FilmURL" value="/admin/film/list"/>
+<c:url var="CreateFilmURL" value="./edit" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,12 +23,10 @@
 			<div class="pull-right tableTools-container">
 				<h1 class="text-center" style="color: yellowgreen;">Films</h1>
 				<div class="dt-buttons btn-overlap btn-group" style="float: right; padding-bottom: 10px;">
-				
-					<c:url var="createFilmURL" value="./edit" />
 					
 					<a flag="info"
 						class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-						data-toggle="tooltip" title='Thêm bài viết' href='${createFilmURL}'>
+						data-toggle="tooltip" title='Thêm bài viết' href='${CreateFilmURL}'>
 						<span> <i class="fa fa-plus-circle bigger-110 purple"></i>
 					</span>
 					</a>
@@ -89,6 +90,10 @@
 		<input type="hidden" value="" id="limit" name="limit"/>	
 	</div>
 </form>
+<spring:message var="confirmDelete" code="confirm_delete"/>
+<spring:message var="confirmDeleteText" code="confirm_delete_text"/>
+<spring:message var="confirmButtonText" code="confirm_button_text"/>
+<spring:message var="cancelButtonText" code="cancel_button_text"/>
 <script type="text/javascript">
 	var totalPages = ${list_film.totalPage};
 	var currentPage = ${list_film.page};
@@ -114,7 +119,7 @@
     	  if ($("tbody input[type=checkbox]:checked").length > 0)
     	  {
     	      $("#btnDelete").removeAttr('disabled','disabled');
-    	      console.log($("tbody input[type=checkbox]:checked").length);
+    	      // console.log($("tbody input[type=checkbox]:checked").length);
     	  }
     	  else
     	  {
@@ -164,15 +169,15 @@
 	
 	function deleteNew(data) {
         $.ajax({
-            url: '${filmAPI}',
+            url: '${FilmAPI}',
             type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (result) {
-            	window.location.href = "${filmURL}?message=delete_film_success&alert=success";
+            	window.location.href = "${FilmURL}?message=delete_film_success&alert=success";
             },
             error: function (error) {
-            	window.location.href = "${filmURL}?message=delete_film_fail&alert=danger";
+            	window.location.href = "${FilmURL}?message=delete_film_fail&alert=danger";
             }
         });
 	}

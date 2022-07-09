@@ -39,7 +39,7 @@
 				</div>
 				<div class="form-group">
 					<form:label path="content">Nội dung:</form:label>
-					<form:input path="content" type="text" class="form-control"
+					<form:textarea path="content" class="form-control"
 						id="inputContent" placeholder="Kể về gia đình ..." />
 					<form:errors path="content" cssClass="error" />
 				</div>
@@ -88,6 +88,10 @@
 		</div>
 	</div>
 <script>
+	var editor = ""; // data cua editor khi thay the cho textarea
+	$(document).ready(function(){
+		editor = CKEDITOR.replace('content');
+	});
 	$('#messageAndAlert').fadeOut(5000);
 </script>
 </body>

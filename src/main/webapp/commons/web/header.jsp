@@ -6,7 +6,12 @@
 			alt="" class="logo">
 			<div class="logo-copy">
 				<h1 class="site-title">DanhUy's Movie</h1>
-				<small class="site-description">Xem phim thỏa thích tại đây</small>
+				<small class="site-description">Xem phim thỏa thích tại đây</small><br />
+				<p>
+					<security:authorize access="isAuthenticated()">
+ 						Welcome, <security:authentication property="name"/>
+					</security:authorize>
+				</p>
 			</div>
 		</a>
 		<!-- #branding -->
@@ -19,8 +24,13 @@
 				<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
 				<li class="menu-item"><a href="about.html">About</a></li>
 				<li class="menu-item"><a href="review.html">Movie reviews</a></li>
-				<li class="menu-item"><a href="joinus.html">Join us</a></li>
-				<li class="menu-item"><a href="contact.html">Contact</a></li>
+				<li class="menu-item"><a href="/admin">Manager</a></li>
+				<security:authorize access="!isAuthenticated()">
+ 					<li class="menu-item"><a href="/login">Login</a></li>
+				</security:authorize>
+				<security:authorize access="isAuthenticated()">
+				  	<li class="menu-item"><a href="/logout">Logout</a></li>
+				</security:authorize>
 			</ul>
 			<!-- .menu -->
 

@@ -18,6 +18,8 @@
 			href="<c:url value='/admin' />" class="nav-link">Home</a></li>
 		<li class="nav-item d-none d-sm-inline-block"><a href="#"
 			class="nav-link">Contact</a></li>
+		<li class="nav-item d-none d-sm-inline-block"><a href="/logout"
+			class="nav-link">Logout</a></li>
 	</ul>
 
 	<!-- Right navbar links -->
@@ -160,7 +162,11 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="https://github.com/pdanh2682000" class="d-block">Phan Duy Anh</a>
+				<a href="https://github.com/pdanh2682000" class="d-block">
+					<security:authorize access="isAuthenticated()">
+ 						Welcome, <security:authentication property="name"/>
+					</security:authorize>
+				</a>
 			</div>
 		</div>
 

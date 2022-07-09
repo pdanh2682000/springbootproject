@@ -30,6 +30,10 @@
 	form .error {
 		color: yellow;
 	}
+	
+	table th,td {
+		text-align: center;
+	}
 </style>
 </head>
 <body
@@ -73,5 +77,7 @@
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 	<script src="<c:url value='/templates/paging/jquery.twbsPagination.js'/>"></script>
+		<!-- CKEDITOR -->
+	<script src="<c:url value='/ckeditor/ckeditor.js' />"></script>
 </body>
 </html>
