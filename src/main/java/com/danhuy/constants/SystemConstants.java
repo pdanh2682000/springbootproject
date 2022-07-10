@@ -27,6 +27,11 @@ public final class SystemConstants {
 	public static final String CREATE_CATEGORY_SUCCESS = "create_category_success";
 	public static final String CREATE_CATEGORY_FAIL = "create_category_fail";
 	
+	public static final String BINDING_USER_ERROR = "user_binding_error";
+	public static final String EXISTS_USERNAME = "exists_username";
+	public static final String EXISTS_EMAIL = "exists_email";
+	public static final String REGISTER_ACCOUNT_SUCCESS = "register_account_success";
+	
 	public static final String ALERT_DANGER = "danger";
 	public static final String ALERT_SUCCESS = "success";
 	

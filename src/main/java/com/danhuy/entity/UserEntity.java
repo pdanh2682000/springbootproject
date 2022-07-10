@@ -43,7 +43,6 @@ public class UserEntity extends BaseEntity {
 	private String password;
 	
 	@Column(name = "fullname")
-	@NotBlank
 	@Size(min = 2, max = 50)
 	private String fullName;
 	

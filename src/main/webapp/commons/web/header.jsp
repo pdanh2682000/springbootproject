@@ -23,7 +23,7 @@
 			<ul class="menu">
 				<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
 				<li class="menu-item"><a href="about.html">About</a></li>
-				<li class="menu-item"><a href="review.html">Movie reviews</a></li>
+				<li class="menu-item"><a href="/signup">Register</a></li>
 				<li class="menu-item"><a href="/admin">Manager</a></li>
 				<security:authorize access="!isAuthenticated()">
  					<li class="menu-item"><a href="/login">Login</a></li>

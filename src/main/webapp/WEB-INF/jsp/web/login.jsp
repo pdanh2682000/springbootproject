@@ -40,6 +40,11 @@
 						<spring:message code="accessDenied" />
 					</div>
 				</c:if>
+				<c:if test="${param.message != null}">
+					<div class="alert alert-${param.alert}" id="messageAndAlert">	
+						<spring:message code="${param.message}" />
+					</div>
+				</c:if>
 				<form action="j_spring_security_check" id="formLogin" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -64,7 +69,7 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="#">Sign Up</a>
+					Don't have an account?<a href="/signup">Sign Up</a>
 				</div>
 				<div class="d-flex justify-content-center">
 					<a href="#">Forgot your password?</a>
@@ -74,7 +79,7 @@
 	</div>
 </div>
 <script type="text/javascript">
-	$('#messageAndAlert').fadeOut(5000);
+	// $('#messageAndAlert').fadeOut(5000);
 </script>
 </body>
 </html>
