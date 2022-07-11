@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Login Page</title>
+	<title>Forgot Page</title>
    <!--Made with love by Mutiullah Samim -->
    
 	<!--Bootsrap 4 CDN-->
@@ -16,13 +16,18 @@
 	<!--Custom styles-->
 	<link rel="stylesheet" type="text/css" href="<c:url value='/templates/login/styles.css' />">
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<style>
+		.card	{
+			height: 300px;
+		}
+	</style>
 </head>
 <body>
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3>Sign In</h3>
+				<h3 style="padding-top: 30px;">Forgot Password</h3>
 				<div class="d-flex justify-content-end social_icon">
 					<a href="/"><span><i class="fa fa-home" aria-hidden="true"></i></span></a>
 					<span><i class="fab fa-facebook-square"></i></span>
@@ -31,49 +36,34 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<c:if test="${param.error != null}">
-					<div class="alert alert-danger" id="messageAndAlert">	
-						<spring:message code="error" />
-					</div>
-				</c:if>
-				<c:if test="${param.accessDenied != null}">
-					<div class="alert alert-danger" id="messageAndAlert">	
-						<spring:message code="accessDenied" />
-					</div>
-				</c:if>
 				<c:if test="${param.message != null}">
 					<div class="alert alert-${param.alert}" id="messageAndAlert">	
 						<spring:message code="${param.message}" />
 					</div>
 				</c:if>
-				<form action="j_spring_security_check" id="formLogin" method="post">
+				<form action="/forgot" id="formLogin" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username" name="username" required>
+						<input type="email" class="form-control" placeholder="Your email" name="email" required>
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password" name="password" required>
-					</div>
-					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
+						<input type="password" class="form-control" placeholder="New password" name="password" required>
+						
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" value="Get" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
 					Don't have an account?<a href="/signup">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="/forgot">Forgot your password?</a>
 				</div>
 			</div>
 		</div>

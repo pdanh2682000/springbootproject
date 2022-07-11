@@ -1,6 +1,9 @@
 package com.danhuy.constants;
 
 public final class SystemConstants {
+	
+	public static final int STATUS_ACTIVE = 1;
+	public static final int STATUS_INACTIVE = 0;
 
 	public static final int POSTER_SLIDE = 1;
 	public static final int POSTER_CONTENT = 0;
@@ -35,6 +38,13 @@ public final class SystemConstants {
 	public static final String CREATE_ROLE_SUCCESS = "create_role_success";
 	public static final String CREATE_ROLE_FAIL = "create_role_fail";
 	public static final String EXISTS_CODE = "exists_code";
+	
+	public static final String USERNAME_EMAIL = "anhb1812252@student.ctu.edu.vn";
+	public static final String PASSWORD_EMAIL = "h!KaA4Ap";
+	public static final String SEND_EMAIL_SUCCESS = "send_email_success";
+	public static final String SEND_EMAIL_FAIL = "send_email_fail";
+	public static final String EMAIL_NOT_FOUND = "email_not_found";
+	
 	
 	public static final String ALERT_DANGER = "danger";
 	public static final String ALERT_SUCCESS = "success";

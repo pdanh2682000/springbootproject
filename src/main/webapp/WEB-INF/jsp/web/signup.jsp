@@ -41,7 +41,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <form:input type="text" id="username" class="form-control" placeholder="Username" path="username" />
+                      <form:input type="text" id="username" class="form-control" placeholder="Username" path="username" required="required" />
                       <form:errors path="username" cssClass="error" /> 
                     </div>
                   </div>
@@ -57,7 +57,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <form:input type="password" id="password" class="form-control" placeholder="Password" path="password" />
+                      <form:input type="password" id="password" class="form-control" placeholder="Password" path="password" required="required"/>
                        <form:errors path="password" cssClass="error" /> 
                     </div>
                   </div>
@@ -65,16 +65,15 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="password" id="repeat_password" class="form-control" placeholder="Repeat your password" name="repeat_password" />
-             
+                      <input type="password" id="repeat_password" class="form-control" placeholder="Repeat your password" name="repeat_password" required />
+             			<span id='message'></span>
                     </div>
                   </div>
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                    <button type="submit" class="btn btn-primary btn-lg" id="btnRegister">Register</button>
                   </div>
-
+					<a href="/">Go home</a>
                 </form:form>
-
               </div>
               <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
 
@@ -89,5 +88,16 @@
     </div>
   </div>
 </section>
+<script>
+	$('#password, #repeat_password').on('keyup', function () {
+	  if ($('#password').val() == $('#repeat_password').val()) {
+	    $('#message').html('Matching').css('color', 'green');
+	    $("#btnRegister").removeAttr("disabled");
+	  } else {
+	    $('#message').html('Not Matching').css('color', 'red');
+	   	$("#btnRegister").attr("disabled", true);
+	  }
+	});
+</script>
 </body>
 </html>

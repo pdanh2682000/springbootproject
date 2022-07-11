@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.danhuy.constants.SystemConstants;
 import com.danhuy.dto.MyUser;
 import com.danhuy.entity.RoleEntity;
 import com.danhuy.entity.UserEntity;
@@ -25,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		final UserEntity user = userRepository.findOneByUsernameAndStatus(username, 1);
+		final UserEntity user = userRepository.findOneByUsernameAndStatus(username, SystemConstants.STATUS_ACTIVE);
 		if(user == null) { 
 			throw new UsernameNotFoundException("User not found!");
 		}
