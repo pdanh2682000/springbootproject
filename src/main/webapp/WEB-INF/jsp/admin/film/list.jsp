@@ -145,14 +145,14 @@
     
     function warningBeforeDelete() {
 		swal({
-			  title: "Xác nhận xóa",
-			  text: "Bạn có chắc chắn muốn xóa hay không",
+			  title: "${confirmDelete}",
+			  text: "${confirmDeleteText}",
 			  type: "warning",
 			  showCancelButton: true,
 			  confirmButtonClass: "btn-success",
 			  cancelButtonClass: "btn-danger",
-			  confirmButtonText: "Xác nhận",
-			  cancelButtonText: "Hủy bỏ",
+			  confirmButtonText: "${confirmButtonText}",
+			  cancelButtonText: "${cancelButtonText}",
 			}).then(function(isConfirm) {
 			  if (isConfirm.value == true) {
 				  	// get data
