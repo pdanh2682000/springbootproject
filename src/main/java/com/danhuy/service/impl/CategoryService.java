@@ -66,4 +66,9 @@ public class CategoryService implements ICategoryService {
 		return mapper.map(categoryRepository.save(entity), CategoryDTO.class);
 	}
 
+	@Override
+	public boolean existsByCode(String code) {
+		return categoryRepository.existsByCode(code);
+	}
+
 }

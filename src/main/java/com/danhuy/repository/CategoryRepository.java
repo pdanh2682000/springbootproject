@@ -7,4 +7,5 @@ import com.danhuy.entity.CategoryEntity;
 public interface CategoryRepository extends JpaRepository<CategoryEntity, Long> {
 	
 	CategoryEntity findOneByCode(String code);
+	boolean existsByCode(String code);
 }

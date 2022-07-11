@@ -35,6 +35,7 @@ public class CategoryController {
 			listCategory = categoryService.findAllForList();
 			out.setResults(listCategory);
 			mav.addObject("list_category", out);
+			mav.addObject("menu", "menu_category");
 			return mav;
 		}
 		catch(Exception e) {
@@ -60,12 +61,20 @@ public class CategoryController {
 				mav = new ModelAndView("/admin/category/add");
 				mav.addObject("message", SystemConstants.BINDING_CATEGORY_ERROR);
 				mav.addObject("alert", SystemConstants.ALERT_DANGER);
+				return mav;
+			}
+			if(categoryService.existsByCode(dto.getCode())) {
+				mav = new ModelAndView("/admin/category/add");
+				mav.addObject("message", SystemConstants.EXISTS_CODE);
+				mav.addObject("alert", SystemConstants.ALERT_DANGER);
+				return mav;
 			}
 			if(!dto.getName().isEmpty() && !dto.getCode().isEmpty()) {
 				mav = new ModelAndView("redirect:/admin/category/list");
 				categoryService.save(dto);
 				mav.addObject("message", SystemConstants.CREATE_CATEGORY_SUCCESS);
 				mav.addObject("alert", SystemConstants.ALERT_SUCCESS);
+				return mav;
 			}
 		} catch(Exception e) {
 			mav = new ModelAndView("redirect:/admin/category/list");

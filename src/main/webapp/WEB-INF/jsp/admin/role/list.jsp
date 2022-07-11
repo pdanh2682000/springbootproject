@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/commons/taglib.jsp"%>
-<c:url var="CreateCategoryURL" value="./add" />
+<c:url var="CreateRoleURL" value="./add" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Danh sách Thể loại</title>
+<title>Danh sách Role</title>
 </head>
 <body>
 <c:if test="${not empty message}">
@@ -24,13 +24,13 @@
 	<div class="widget-box table-filter">
 		<div class="table-btn-controls">
 			<div class="pull-right tableTools-container">
-				<h1 class="text-center" style="color: yellowgreen;">Thể loại</h1>
+				<h1 class="text-center" style="color: yellowgreen;">Role</h1>
 				<div class="dt-buttons btn-overlap btn-group" style="float: left; padding-left: 10px; padding-bottom: 10px;">
 				
 					
 					<a flag="info"
 						class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-						data-toggle="tooltip" title='Thêm bài viết' href='${CreateCategoryURL}'>
+						data-toggle="tooltip" title='Thêm bài viết' href='${CreateRoleURL}'>
 						<span> <i class="fa fa-plus-circle bigger-110 purple"></i>
 					</span>
 					</a>
@@ -48,7 +48,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="item" items="${list_category.results}">
+				<c:forEach var="item" items="${list_role.results}">
 					<tr>
 						<td>${item.name}</td>
 						<td>${item.code}</td>

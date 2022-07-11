@@ -63,6 +63,7 @@ public class FilmController {
 			if (request.getParameter("message") != null && request.getParameter("alert") != null)
 				MessageUtils.setMessageAndAlertForView(request.getParameter("message"), request.getParameter("alert"),
 						mav);
+			mav.addObject("menu", "menu_film");
 			return mav;
 		} catch (Exception e) {
 			ModelAndView mav = new ModelAndView("redirect:/admin");

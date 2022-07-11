@@ -197,17 +197,17 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="<c:url value='/admin/film/list' />" class="nav-link active">
+						<li class="nav-item"><a href="<c:url value='/admin/film/list' />" class="nav-link" id="menu_film">
 								<i class="far fa-circle nav-icon"></i>
 								<p>Quản lý Film</p>
 						</a></li>
 						<li class="nav-item"><a href="<c:url value='/admin/category/list' />"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							class="nav-link" id="menu_category"> <i class="far fa-circle nav-icon"></i>
 								<p>Quản lý thể loại</p>
 						</a></li>
-						<li class="nav-item"><a href="./index3.html" class="nav-link">
+						<li class="nav-item"><a href="<c:url value='/admin/role/list' />" class="nav-link" id="menu_role">
 								<i class="far fa-circle nav-icon"></i>
-								<p>Dashboard v3</p>
+								<p>Quản lý Role</p>
 						</a></li>
 					</ul></li>
 				<li class="nav-item"><a href="pages/widgets.html"

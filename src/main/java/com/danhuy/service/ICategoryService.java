@@ -13,4 +13,5 @@ public interface ICategoryService {
 	List<CategoryDTO> findAllForList();
 	List<CategoryDTO> findAllForPaging(Pageable pageable);
 	CategoryDTO save(CategoryDTO dto);
+	boolean existsByCode(String code);
 }

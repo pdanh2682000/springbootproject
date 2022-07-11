@@ -79,5 +79,29 @@
 	<script src="<c:url value='/templates/paging/jquery.twbsPagination.js'/>"></script>
 		<!-- CKEDITOR -->
 	<script src="<c:url value='/ckeditor/ckeditor.js' />"></script>
+	<script>
+		var menu = '${menu}';
+		$(document).ready(function(){
+			switch(menu){
+				case 'menu_film': {
+				    $("#menu_film").removeClass('active');
+				    $("#menu_film").addClass('active');
+					break;
+				}
+				case 'menu_category': {
+				    $("#menu_category").removeClass('active');
+				    $("#menu_category").addClass('active');
+					break;
+				}
+				case 'menu_role': {
+				    $("#menu_role").removeClass('active');
+				    $("#menu_role").addClass('active');
+					break;
+				}
+			}
+		})
+	
+		
+	</script>
 </body>
 </html>
