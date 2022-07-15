@@ -21,6 +21,10 @@ public class MyUser extends User {
 	@Setter
 	private String fullName;
 	
+	@Getter
+	@Setter
+	private Long id;
+	
 	/**
 	 * 
 	 */

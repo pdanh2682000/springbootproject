@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.danhuy.constants.SystemConstants;
@@ -22,12 +23,22 @@ public class UserProfileController {
 		UserDTO dto = userService.findById(id);
 		if(id != null) {
 			if(dto == null) {
-				mav.addObject("message", "User not found!");
-				mav.addObject("alert", "danger");
+				mav.addObject("message", SystemConstants.USER_NOT_FOUND);
+				mav.addObject("alert", SystemConstants.ALERT_DANGER);
 			}
 			else {
 				mav.addObject("modelUser", dto);
 			}
+		}
+		return mav;
+	}
+	
+	@RequestMapping("/profile")
+	public ModelAndView profileError(@RequestParam(value = "not_login", required = false) String statusLogin) {
+		ModelAndView mav = new ModelAndView("profile/user_profile");
+		if(statusLogin != null) {
+			mav.addObject("message", SystemConstants.USER_NOT_FOUND);
+			mav.addObject("alert", SystemConstants.ALERT_DANGER);
 		}
 		return mav;
 	}

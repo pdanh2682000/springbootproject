@@ -41,6 +41,7 @@ public final class SystemConstants {
 	public static final String UPDATE_USER_SUCCESS = "update_user_success";
 	public static final String CREATE_USER_SUCCESS = "create_user_success";
 	public static final String EDIT_USER_FAIL = "edit_user_fail";
+	public static final String NOT_LOGIN = "not_login";
 	
 	public static final String CREATE_ROLE_SUCCESS = "create_role_success";
 	public static final String CREATE_ROLE_FAIL = "create_role_fail";
@@ -51,6 +52,7 @@ public final class SystemConstants {
 	public static final String SEND_EMAIL_SUCCESS = "send_email_success";
 	public static final String SEND_EMAIL_FAIL = "send_email_fail";
 	public static final String EMAIL_NOT_FOUND = "email_not_found";
+	public static final String USER_NOT_FOUND = "user_not_found";
 	
 	
 	public static final String ALERT_DANGER = "danger";

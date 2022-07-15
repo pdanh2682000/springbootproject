@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/commons/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,6 +118,11 @@ section {
 <body>
 	<section class="bg-light">
     <div class="container">
+    <c:if test="${not empty message}">
+		<div class="alert alert-${alert}" id="messageAndAlert">	
+			<h1><spring:message code="${message}" /></h1>
+		</div>
+	</c:if>
         <div class="row">
             <div class="col-lg-12 mb-4 mb-sm-5">
                 <div class="card card-style1 border-0">

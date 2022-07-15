@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.danhuy.utils.SecurityUtils" %>
 <header class="site-header">
 	<div class="container">
 		<a href="index.html" id="branding"> <img src="<c:url value='/templates/web/images/logo.png' />"
@@ -21,8 +22,13 @@
 				<i class="fa fa-bars"></i>
 			</button>
 			<ul class="menu">
-				<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
-				<li class="menu-item"><a href="about.html">About</a></li>
+				<li class="menu-item current-menu-item"><a href="/">Home</a></li>
+				<security:authorize access="isAuthenticated()">
+ 						<li class="menu-item"><a href="/profile/<%= SecurityUtils.getPrincipal().getId() %>">About</a></li>
+				</security:authorize>
+				<security:authorize access="!isAuthenticated()">
+ 						<li class="menu-item"><a href="/profile?not_login=true">About</a></li>
+				</security:authorize>
 				<li class="menu-item"><a href="/signup">Register</a></li>
 				<li class="menu-item"><a href="/admin">Manager</a></li>
 				<security:authorize access="!isAuthenticated()">
