@@ -15,8 +15,12 @@ public final class SystemConstants {
 	public static final int DEFAULT_LIMIT_PAGE = 5;
 	public static final int DEFAULT_PAGE = 1;
 	
+	public static final String DEFAULT_ROLE = "ROLE_USER";
+	
 	public static final String POSTER_CONTENT_STR = "/poster_content/";
 	public static final String POSTER_SLIDE_STR = "/poster_slide/";
+	public static final String UPLOAD_POSTER_CONTENT = "poster_content";
+	public static final String UPLOAD_AVATAR = "avatar";
 	
 	public static final String BINDING_FILM_ERROR = "film_binding_error";
 	public static final String CREATE_FILM_SUCCESS = "create_film_success";
@@ -34,6 +38,9 @@ public final class SystemConstants {
 	public static final String EXISTS_USERNAME = "exists_username";
 	public static final String EXISTS_EMAIL = "exists_email";
 	public static final String REGISTER_ACCOUNT_SUCCESS = "register_account_success";
+	public static final String UPDATE_USER_SUCCESS = "update_user_success";
+	public static final String CREATE_USER_SUCCESS = "create_user_success";
+	public static final String EDIT_USER_FAIL = "edit_user_fail";
 	
 	public static final String CREATE_ROLE_SUCCESS = "create_role_success";
 	public static final String CREATE_ROLE_FAIL = "create_role_fail";

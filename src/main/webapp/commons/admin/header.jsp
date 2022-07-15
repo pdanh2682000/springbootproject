@@ -211,6 +211,10 @@
 								<i class="far fa-circle nav-icon"></i>
 								<p>Quản lý Role</p>
 						</a></li>
+						<li class="nav-item"><a href="<c:url value='/admin/user/list' />" class="nav-link" id="menu_user">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Quản lý User</p>
+						</a></li>
 					</ul></li>
 				<li class="nav-item"><a href="pages/widgets.html"
 					class="nav-link"> <i class="nav-icon fas fa-th"></i>

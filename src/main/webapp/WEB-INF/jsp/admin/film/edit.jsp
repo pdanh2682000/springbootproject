@@ -27,7 +27,7 @@
 					<form:errors path="title" cssClass="error" />
 				</div>
 				<div class="form-group">
-					<form:label path="filmLength">Thể loại:</form:label>
+					<form:label path="categoryCode">Thể loại:</form:label>
 					<form:select id="categoryCode" path="categoryCode">
 				  	 	<form:option value="" label="--- Chọn thể loại ---" />
 				  	 	<form:options items="${categories}" />
@@ -35,7 +35,8 @@
 					<form:errors path="categoryCode" cssClass="error" />
 				</div>
 				<div class="form-group">
-					<input name="file" type="file" class="form-control"/>
+					<label for="poster">Poster:</label>
+					<input id="poster" name="file" type="file" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<form:label path="content">Nội dung:</form:label>

@@ -1,7 +1,9 @@
 package com.danhuy.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,16 @@ public class RoleService implements IRoleService {
 	@Override
 	public boolean existsByCode(String code) {
 		return roleRepository.existsByCode(code);
+	}
+
+	@Override
+	public Map<String, String> findAllMap() {
+		Map<String, String> results = new HashMap<>();
+		List<RoleEntity> entities = roleRepository.findAll();
+		for(RoleEntity e : entities) {
+			results.put(e.getCode(), e.getName());
+		}
+		return results;
 	}
 
 }

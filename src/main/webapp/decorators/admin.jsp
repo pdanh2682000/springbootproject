@@ -98,6 +98,11 @@
 				    $("#menu_role").addClass('active');
 					break;
 				}
+				case 'menu_user': {
+				    $("#menu_user").removeClass('active');
+				    $("#menu_user").addClass('active');
+					break;
+				}
 			}
 		})
 	

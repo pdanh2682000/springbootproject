@@ -30,7 +30,7 @@
 					
 					<a flag="info"
 						class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-						data-toggle="tooltip" title='Thêm bài viết' href='${CreateRoleURL}'>
+						data-toggle="tooltip" title='Thêm role' href='${CreateRoleURL}'>
 						<span> <i class="fa fa-plus-circle bigger-110 purple"></i>
 					</span>
 					</a>

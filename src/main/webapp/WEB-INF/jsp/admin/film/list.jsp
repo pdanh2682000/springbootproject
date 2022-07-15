@@ -26,14 +26,14 @@
 					
 					<a flag="info"
 						class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-						data-toggle="tooltip" title='Thêm bài viết' href='${CreateFilmURL}'>
+						data-toggle="tooltip" title='Thêm film' href='${CreateFilmURL}'>
 						<span> <i class="fa fa-plus-circle bigger-110 purple"></i>
 					</span>
 					</a>
 					<button id="btnDelete" type="button"
 						onclick="warningBeforeDelete()"
 						class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-						data-toggle="tooltip" title='Xóa bài viết' style="border-left: 1px solid white" disabled>
+						data-toggle="tooltip" title='Xóa films' style="border-left: 1px solid white" disabled>
 						<ion-icon name="trash-outline"></ion-icon>
 					</button>
 				</div>
@@ -77,8 +77,8 @@
 								<c:param name="id" value="${item.id}"></c:param>
 							</c:url>
 							<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-								title="Cập nhật bài viết" href='${updateFilmURL}'> <ion-icon
-									name="create-outline" title="Cập nhật bài viết"></ion-icon>
+								title="Cập nhật film" href='${updateFilmURL}'> <ion-icon
+									name="create-outline" title="Cập nhật user"></ion-icon>
 							</a>
 						</td>
 					</tr>

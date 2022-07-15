@@ -118,7 +118,7 @@ public class FilmController {
 			
 			// upload file
 			if(file != null && !file.isEmpty()) {
-				String generatedFilename = uploadFileService.storeFile(file);
+				String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
 				dto.setUrl(generatedFilename);
 			}
 			

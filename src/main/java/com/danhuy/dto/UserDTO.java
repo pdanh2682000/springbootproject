@@ -1,5 +1,7 @@
 package com.danhuy.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -23,8 +25,12 @@ public class UserDTO extends AbstractDTO<UserDTO> {
 	private String password;
 	
 	private String fullName;
+	
+	@Size(min = 6, max = 100, message = "{emailSize}")
 	private String email;
+	
 	private String phone;
 	private Integer status;
 	private String avatar;
+	private List<String> roleCode;
 }

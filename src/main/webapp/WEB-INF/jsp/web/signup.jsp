@@ -49,7 +49,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <form:input type="email" id="email" class="form-control" placeholder="Your Email" path="email" />
+                      <form:input type="email" id="email" class="form-control" placeholder="Your Email" path="email" required="required" />
                        <form:errors path="email" cssClass="error" /> 
                     </div>
                   </div>
