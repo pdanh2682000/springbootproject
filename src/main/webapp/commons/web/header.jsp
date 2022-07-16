@@ -27,7 +27,7 @@
  						<li class="menu-item"><a href="/profile/<%= SecurityUtils.getPrincipal().getId() %>">About</a></li>
 				</security:authorize>
 				<security:authorize access="!isAuthenticated()">
- 						<li class="menu-item"><a href="/profile?not_login=true">About</a></li>
+ 						<li class="menu-item"><a href="/profile?not_login">About</a></li>
 				</security:authorize>
 				<li class="menu-item"><a href="/signup">Register</a></li>
 				<li class="menu-item"><a href="/admin">Manager</a></li>

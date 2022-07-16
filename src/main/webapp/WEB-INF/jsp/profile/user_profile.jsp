@@ -118,9 +118,16 @@ section {
 <body>
 	<section class="bg-light">
     <div class="container">
-    <c:if test="${not empty message}">
-		<div class="alert alert-${alert}" id="messageAndAlert">	
-			<h1><spring:message code="${message}" /></h1>
+    <c:if test="${param.message == null}">
+	    <c:if test="${not empty message}">
+			<div class="alert alert-${alert}" id="messageAndAlert">	
+				<h1><spring:message code="${message}" /></h1>
+			</div>
+		</c:if>
+	</c:if>
+	<c:if test="${param.message != null}">
+		<div class="alert alert-${param.alert}" id="messageAndAlert">	
+			<h1><spring:message code="${param.message}" /></h1>
 		</div>
 	</c:if>
         <div class="row">
@@ -129,9 +136,16 @@ section {
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
                             <div class="col-lg-6 mb-4 mb-lg-0">
-                                <img src="${modelUser.avatar}"
-                                		style="width:90%; border-radius: 50%;"
-                                 alt="No avatar image">
+                            	<c:if test="${not empty modelUser.avatar}">
+	                                <img src="${modelUser.avatar}"
+	                                		style="width:90%; border-radius: 50%;"
+	                                 alt="No avatar image">
+	                            </c:if>
+	                            <c:if test="${empty modelUser.avatar}">
+	                            	 <img src="../avatar/avatar_default.png"
+	                                		style="width:30%; border-radius: 50%;"
+	                                 alt="No avatar image">
+	                            </c:if>
                             </div>
                             <div class="col-lg-6 px-xl-10">
                                 <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">

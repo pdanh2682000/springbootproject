@@ -37,7 +37,7 @@ public class UserProfileController {
 	public ModelAndView profileError(@RequestParam(value = "not_login", required = false) String statusLogin) {
 		ModelAndView mav = new ModelAndView("profile/user_profile");
 		if(statusLogin != null) {
-			mav.addObject("message", SystemConstants.USER_NOT_FOUND);
+			mav.addObject("message", SystemConstants.NOT_LOGIN);
 			mav.addObject("alert", SystemConstants.ALERT_DANGER);
 		}
 		return mav;
