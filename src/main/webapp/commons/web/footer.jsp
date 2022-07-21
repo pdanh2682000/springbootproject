@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<footer class="site-footer">
+<footer class="site-footer" style="background-color: black;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
@@ -12,8 +12,8 @@
 			<div class="col-md-2">
 				<div class="widget">
 					<h3 class="widget-title">Recent Review</h3>
-					<ul class="no-bullet">
-						<li><a href="#">Film đạt chất lượng</a></li>
+					<ul class="no-bullet" >
+						<li ><a href="#">Film đạt chất lượng</a></li>
 						<li><a href="#">Nhiều người xem</a></li>
 						<li><a href="#">Film cập nhật liên tục</a></li>
 						<li><a href="#">Xem phim thỏa thích</a></li>

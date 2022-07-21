@@ -3,7 +3,7 @@
 <%@ page import="com.danhuy.utils.SecurityUtils" %>
 <header class="site-header">
 	<div class="container">
-		<a href="index.html" id="branding"> <img src="<c:url value='/templates/web/images/logo.png' />"
+		<a href="/" id="branding"> <img src="<c:url value='/templates/web/images/logo.png' />"
 			alt="" class="logo">
 			<div class="logo-copy">
 				<h1 class="site-title">DanhUy's Movie</h1>

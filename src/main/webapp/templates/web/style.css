@@ -301,7 +301,7 @@ form textarea {
       width: 45px;
       height: 45px;
       border-radius: 50%;
-      background: white;
+      background: rgba(0,0,0,.6);
       text-align: center;
       line-height: 2.5;
       font-size: 18px;
@@ -311,8 +311,11 @@ form textarea {
       -webkit-transition: .3s ease;
               transition: .3s ease; }
       .slider .flex-direction-nav a:hover {
-        background-color: #ffaa3c;
+        background-color: rgb(0, 0, 0);
         color: white; }
+      .slider .flex-direction-nav a {
+      	color: white; 
+      }
     .slider .flex-direction-nav .flex-prev {
       left: 30px; }
     .slider .flex-direction-nav .flex-next {
