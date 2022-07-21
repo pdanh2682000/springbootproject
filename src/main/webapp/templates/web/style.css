@@ -211,7 +211,7 @@ table {
  * Global Styles
  */
 body {
-  background-color: #131a20;
+  background-color: #131a20 !important;
   background-image: url(dummy/background.jpg);
   background-position: top center;
   background-repeat: no-repeat;
@@ -1524,10 +1524,15 @@ ul.arrow {
       .mobile-navigation .menu a:hover {
         color: #ffaa3c; }
 
+.main-content {
+	
+}
+
 .main-content .container {
   background: white;
   border-radius: 5px;
-  padding: 30px; }
+  padding: 30px;
+ }
 
 .section-title {
   font-size: 30px;

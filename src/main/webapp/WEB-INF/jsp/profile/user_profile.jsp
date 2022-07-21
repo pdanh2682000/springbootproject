@@ -121,13 +121,13 @@ section {
     <c:if test="${param.message == null}">
 	    <c:if test="${not empty message}">
 			<div class="alert alert-${alert}" id="messageAndAlert">	
-				<h1><spring:message code="${message}" /></h1>
+				<h3><spring:message code="${message}" /></h3>
 			</div>
 		</c:if>
 	</c:if>
 	<c:if test="${param.message != null}">
 		<div class="alert alert-${param.alert}" id="messageAndAlert">	
-			<h1><spring:message code="${param.message}" /></h1>
+			<h3><spring:message code="${param.message}" /></h3>
 		</div>
 	</c:if>
         <div class="row">
@@ -148,7 +148,7 @@ section {
 	                            </c:if>
                             </div>
                             <div class="col-lg-6 px-xl-10">
-                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded" style="padding: 10px;">
                                     <h3 class="h2 text-white mb-0">${modelUser.fullName}</h3>
                                 </div>
                                 <ul class="list-unstyled mb-1-9">

@@ -35,4 +35,7 @@ public class FilmDTO extends AbstractDTO<FilmDTO> {
 	private Integer posterSlide;
 	private String publishDate;
 	private Long filmLength;
+	private String trailer;
+	private String starNum;
+	private String starInfo;
 }

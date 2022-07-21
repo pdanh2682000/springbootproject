@@ -1,9 +1,13 @@
 package com.danhuy.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -47,7 +51,13 @@ public class FilmEntity extends BaseEntity {
 	@Column(name = "film_length", columnDefinition = "bigint default 0")
 	private Long filmLength;
 	
+	@Column(name = "trailer")
+	private String trailer;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id")
 	private CategoryEntity category;
+	
+	@ManyToMany(mappedBy = "films")
+	private List<RateEntity> rates = new ArrayList<>();
 }

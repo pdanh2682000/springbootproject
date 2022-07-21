@@ -41,13 +41,13 @@
 											<div class="modal-header">
 												<h5 class="modal-title" id="exampleModalLongTitle">Mô
 													tả ngắn</h5>
-												<button type="button" class="close" data-dismiss="modal"
+												<button type="button" id="myStopClickButton" class="close myStopClickButton" data-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
 											<div class="modal-body">
-												<h4>Tên phim: MA TRẬN HỒI SINH</h4>
+												<h4>Tên phim: XÓM TRỌ 3D</h4>
 
 												<p>Trạng thái:<span class="modal-content-style"> HD Vietsub + TM</span></p>
 												<p>Đạo diễn: <span class="modal-content-style">Lana Wachowski</span></p>
@@ -83,12 +83,12 @@
 												<h6>Trailer:</h6>
 												<!-- 16:9 aspect ratio -->
 												<div class="embed-responsive embed-responsive-4by3">
-													<iframe class="embed-responsive-item"
+													<iframe class="embed-responsive-item myVideoClass"
 														src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
 												</div>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
+												<button id="myStopClickButton" type="button" class="btn btn-secondary myStopClickButton"
 													data-dismiss="modal">Close</button>
 												<button type="button" class="btn btn-primary">Xem
 													phim</button>
@@ -110,13 +110,13 @@
 											<div class="modal-header">
 												<h5 class="modal-title" id="exampleModalLongTitle">Mô
 													tả ngắn</h5>
-												<button type="button" class="close" data-dismiss="modal"
+												<button type="button" class="close myStopClickButton" data-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
 											<div class="modal-body">
-												<h4>Tên phim: MA TRẬN HỒI SINH</h4>
+												<h4>Tên phim: MẮT BIẾC</h4>
 
 												<p>Trạng thái:<span class="modal-content-style"> HD Vietsub + TM</span></p>
 												<p>Đạo diễn: <span class="modal-content-style">Lana Wachowski</span></p>
@@ -149,9 +149,15 @@
 															Henwick</span>
 													</div>
 												</a>
+												<h6>Trailer:</h6>
+												<!-- 16:9 aspect ratio -->
+												<div class="embed-responsive embed-responsive-4by3">
+													<iframe class="embed-responsive-item myVideoClass"
+														src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+												</div>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
+												<button type="button" class="btn btn-secondary myStopClickButton"
 													data-dismiss="modal">Close</button>
 												<button type="button" class="btn btn-primary">Xem
 													phim</button>
@@ -180,23 +186,23 @@
 										<div class="modal-header">
 											<h5 class="modal-title" id="exampleModalLongTitle">Mô tả
 												ngắn</h5>
-											<button type="button" class="close" data-dismiss="modal"
+											<button type="button" class="close myStopClickButton" data-dismiss="modal"
 												aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
 										<div class="modal-body">
-											<h4>Tên phim: MA TRẬN HỒI SINH</h4>
+											<h4>Tên phim: ${poster.title}</h4>
 
 											<p>Trạng thái:<span class="modal-content-style"> HD Vietsub + TM</span></p>
-												<p>Đạo diễn: <span class="modal-content-style">Lana Wachowski</span></p>
-												<p>Quốc gia: <span class="modal-content-style">Mỹ</span></p>
-												<p>Năm sản xuất: <span class="modal-content-style">2021</span></p>
-												<p>Thời lượng: <span class="modal-content-style">148 phút</span></p>
+												<p>Đạo diễn: <span class="modal-content-style">${poster.author}</span></p>
+												<p>Quốc gia: <span class="modal-content-style">Việt Nam</span></p>
+												<p>Năm sản xuất: <span class="modal-content-style">${poster.publishDate}</span></p>
+												<p>Thời lượng: <span class="modal-content-style">${poster.filmLength}</span></p>
 												<p>Chất lượng: <span class="modal-content-style">Bản đẹp</span></p>
 												<p>Độ phân giải: <span class="modal-content-style">Full HD</span></p>
 												<p>Ngôn ngữ: <span class="modal-content-style">Phụ đề việt</span></p>
-												<p>Thể loại: <span class="modal-content-style">Chiếu Rạp, Gây Cấn, Hành Động, Viễn Tưởng</span></p>
+												<p>Thể loại: <span class="modal-content-style">${poster.categoryName}</span></p>
 												<p>Lượt xem: <span class="modal-content-style">1.6K</span></p>
 												<p>Công ty SX: <span class="modal-content-style">Đang cập nhật</span></p>
 
@@ -209,19 +215,18 @@
 											<a class="actor-profile-item" href="#"
 												title="Diễn viên Jessica Henwick">
 												<div class="actor-name">
-													<span class="actor-name-a" itemprop="name">Jessica
-														Henwick</span>
-												</div>
-											</a> <a class="actor-profile-item" href="#"
-												title="Diễn viên Jessica Henwick">
-												<div class="actor-name">
-													<span class="actor-name-a" itemprop="name">Jessica
-														Henwick</span>
+													<span class="actor-name-a" itemprop="name">${poster.actor}</span>
 												</div>
 											</a>
+											<h6>Trailer:</h6>
+												<!-- 16:9 aspect ratio -->
+												<div class="embed-responsive embed-responsive-4by3">
+													<iframe class="embed-responsive-item myVideoClass"
+														src="${poster.trailer}"></iframe>
+												</div>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary"
+											<button type="button" class="btn btn-secondary myStopClickButton"
 												data-dismiss="modal">Close</button>
 											<button type="button" class="btn btn-primary">Xem
 												phim</button>
@@ -312,6 +317,15 @@
 			visitCount = 1;
 			localStorage.setItem("page_view", visitCount);
 		}
+		
+		 $('.myStopClickButton').click(function(){
+		      $('.myVideoClass').each(function(){
+		        var el_src = $(this).attr("src");
+		        $(this).attr("src",el_src);
+		      });
+		    });
+		 
+		
 	</script>
 </body>
 </html>

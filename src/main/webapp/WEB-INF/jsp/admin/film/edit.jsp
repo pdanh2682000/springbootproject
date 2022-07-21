@@ -74,6 +74,12 @@
 						id="inputFilmLength" placeholder="1000" />
 					<form:errors path="filmLength" cssClass="error" />
 				</div>
+				<div class="form-group">
+					<form:label path="trailer">Trailer URL:</form:label>
+					<form:input path="trailer" type="text" class="form-control"
+						id="inputTrailer" placeholder="https://www.youtube.com/embed/..." />
+					<form:errors path="trailer" cssClass="error" />
+				</div>
 				<form:hidden path="id" id="filmId"/>
 				<c:if test="${not empty filmDTO.id}">
 					<button type="submit" class="btn btn-primary">Cập nhật</button>
