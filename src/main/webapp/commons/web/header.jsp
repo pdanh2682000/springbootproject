@@ -22,12 +22,12 @@
 				<i class="fa fa-bars"></i>
 			</button>
 			<ul class="menu">
-				<li class="menu-item current-menu-item"><a href="/">Home</a></li>
+				<li class="menu-item current-menu-item" id="menuHome"><a href="/">Home</a></li>
 				<security:authorize access="isAuthenticated()">
- 						<li class="menu-item"><a href="/profile/<%= SecurityUtils.getPrincipal().getId() %>">About</a></li>
+ 						<li class="menu-item about" id="menuAbout"><a href="/profile/<%= SecurityUtils.getPrincipal().getId() %>">About</a></li>
 				</security:authorize>
 				<security:authorize access="!isAuthenticated()">
- 						<li class="menu-item"><a href="/profile?not_login">About</a></li>
+ 						<li class="menu-item about" id="menuAbout"><a href="/profile?not_login">About</a></li>
 				</security:authorize>
 				<li class="menu-item"><a href="/signup">Register</a></li>
 				<li class="menu-item"><a href="/admin">Manager</a></li>

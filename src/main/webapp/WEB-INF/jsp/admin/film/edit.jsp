@@ -51,7 +51,7 @@
 					<form:errors path="shortDescription" cssClass="error" />
 				</div>
 				<div class="form-group">
-					<form:label path="actor">Diễn viên:</form:label>
+					<form:label path="actor">Diễn viên ( phân biệt bởi ';' ):</form:label>
 					<form:input path="actor" type="text" class="form-control"
 						id="inputActor" placeholder="Chi Pu" />
 					<form:errors path="actor" cssClass="error" />

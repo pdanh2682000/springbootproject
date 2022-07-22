@@ -15,4 +15,6 @@ public interface IFilmService {
 	FilmDTO save(FilmDTO dto);
 	FilmDTO findById(Long id);
 	void delete(long[] ids);
+	void addFilmRate(String filmId, String starNum);
+	long countQuantityFilmRate(String filmId);
 }

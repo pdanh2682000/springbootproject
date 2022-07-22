@@ -38,4 +38,7 @@ public class FilmDTO extends AbstractDTO<FilmDTO> {
 	private String trailer;
 	private String starNum;
 	private String starInfo;
+	// more info
+	private Integer quantityRate = 0;
+	private Integer everageRate = 0;
 }

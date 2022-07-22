@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -58,6 +59,8 @@ public class FilmEntity extends BaseEntity {
 	@JoinColumn(name = "category_id")
 	private CategoryEntity category;
 	
-	@ManyToMany(mappedBy = "films")
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "film_rate", joinColumns = @JoinColumn(name = "filmid"),
+									inverseJoinColumns = @JoinColumn(name = "rateid"))
 	private List<RateEntity> rates = new ArrayList<>();
 }

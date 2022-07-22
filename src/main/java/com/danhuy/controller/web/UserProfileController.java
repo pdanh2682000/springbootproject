@@ -30,6 +30,7 @@ public class UserProfileController {
 				mav.addObject("modelUser", dto);
 			}
 		}
+		mav.addObject("menu", "about");
 		return mav;
 	}
 	
@@ -40,6 +41,7 @@ public class UserProfileController {
 			mav.addObject("message", SystemConstants.NOT_LOGIN);
 			mav.addObject("alert", SystemConstants.ALERT_DANGER);
 		}
+		mav.addObject("menu", "about");
 		return mav;
 	}
 }

@@ -49,6 +49,10 @@
 		.modal-content-style {
 			font-style: italic;
 		}
+		
+		ul.menu li.menu-item a:hover {
+			text-decoration: none;
+		}
 	</style>
 </head>
 <body>
@@ -69,7 +73,15 @@
 	<script src="<c:url value='/templates/web/js/jquery-1.11.1.min.js' />"></script>
 	<script src="<c:url value='/templates/web/js/plugins.js' />"></script>
 	<script src="<c:url value='/templates/web/js/app.js' />"></script>
+	<script>
+		var menu = "${menu}";
+		if(menu != null && menu != "" && menu == "about") {
+			$('#menuAbout').toggleClass("current-menu-item");
+			$('#menuHome').toggleClass("current-menu-item");
+			console.log($('#menuAbout'));
+		}
 	
+	</script>
 </body>
 
 </html>

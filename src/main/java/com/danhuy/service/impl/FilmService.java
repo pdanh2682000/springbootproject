@@ -14,8 +14,10 @@ import com.danhuy.converter.CustomFilmConverter;
 import com.danhuy.dto.FilmDTO;
 import com.danhuy.entity.CategoryEntity;
 import com.danhuy.entity.FilmEntity;
+import com.danhuy.entity.RateEntity;
 import com.danhuy.repository.CategoryRepository;
 import com.danhuy.repository.FilmRepository;
+import com.danhuy.repository.RateRepository;
 import com.danhuy.service.IFilmService;
 
 @Service
@@ -32,6 +34,9 @@ public class FilmService implements IFilmService {
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private RateRepository rateRepository;
 	
 	@Override
 	public List<FilmDTO> findAll() {
@@ -56,9 +61,20 @@ public class FilmService implements IFilmService {
 			FilmDTO dto = mapper.map(e, FilmDTO.class);
 			// custom convert
 			converter.toDTO(dto, e);
+			dto.setQuantityRate(e.getRates().size());
+			dto.setEverageRate(everageRatePerFilm(e));
 			results.add(dto);
 		}
 		return results;
+	}
+	
+	public int everageRatePerFilm(FilmEntity entity) {
+		
+		int result = 0;
+		for(RateEntity rate : entity.getRates()) {
+			result += Integer.parseInt(rate.getStarNum());
+		}
+		return  (entity.getRates().size() > 0) ? (int)Math.ceil((double)result / (entity.getRates().size())) : 0;
 	}
 
 	@Override
@@ -124,5 +140,28 @@ public class FilmService implements IFilmService {
 		for(long id : ids) {
 			filmRepository.deleteById(id);
 		}
+	}
+
+	@Override
+	@Transactional
+	public void addFilmRate(String filmId, String starNum) {
+		
+		Optional<FilmEntity> filmEntity = filmRepository.findById(Long.parseLong(filmId));
+		RateEntity rateEntity = rateRepository.findByStarNum(starNum);
+		if(filmEntity.get() != null && rateEntity != null) {
+			filmEntity.get().getRates().add(rateEntity);
+		}
+		filmRepository.save(filmEntity.get());
+	}
+
+	@Override
+	public long countQuantityFilmRate(String filmId) {
+		
+		Optional<FilmEntity> filmEntity = filmRepository.findById(Long.parseLong(filmId));
+		if(filmEntity != null && !filmEntity.isEmpty()) {
+			List<RateEntity> rateEntity = filmEntity.get().getRates();
+			return rateEntity.size();
+		}
+		return 0;
 	}
 }

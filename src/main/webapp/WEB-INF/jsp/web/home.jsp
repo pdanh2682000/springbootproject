@@ -17,9 +17,8 @@
 						<ul class="slides">
 
 							<c:forEach items="${poster_slide.results}" var="poster">
-								<li><img
-										src="<c:url value='${poster.url}' />" alt="${poster.title}">
-								</li>
+								<li><img src="<c:url value='${poster.url}' />"
+									alt="${poster.title}"></li>
 							</c:forEach>
 
 
@@ -41,7 +40,8 @@
 											<div class="modal-header">
 												<h5 class="modal-title" id="exampleModalLongTitle">Mô
 													tả ngắn</h5>
-												<button type="button" id="myStopClickButton" class="close myStopClickButton" data-dismiss="modal"
+												<button type="button" id="myStopClickButton"
+													class="close myStopClickButton" data-dismiss="modal"
 													aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -49,23 +49,54 @@
 											<div class="modal-body">
 												<h4>Tên phim: XÓM TRỌ 3D</h4>
 
-												<p>Trạng thái:<span class="modal-content-style"> HD Vietsub + TM</span></p>
-												<p>Đạo diễn: <span class="modal-content-style">Lana Wachowski</span></p>
-												<p>Quốc gia: <span class="modal-content-style">Mỹ</span></p>
-												<p>Năm sản xuất: <span class="modal-content-style">2021</span></p>
-												<p>Thời lượng: <span class="modal-content-style">148 phút</span></p>
-												<p>Chất lượng: <span class="modal-content-style">Bản đẹp</span></p>
-												<p>Độ phân giải: <span class="modal-content-style">Full HD</span></p>
-												<p>Ngôn ngữ: <span class="modal-content-style">Phụ đề việt</span></p>
-												<p>Thể loại: <span class="modal-content-style">Chiếu Rạp, Gây Cấn, Hành Động, Viễn Tưởng</span></p>
-												<p>Lượt xem: <span class="modal-content-style">1.6K</span></p>
-												<p>Công ty SX: <span class="modal-content-style">Đang cập nhật</span></p>
+												<p>
+													Trạng thái:<span class="modal-content-style"> HD
+														Vietsub + TM</span>
+												</p>
+												<p>
+													Đạo diễn: <span class="modal-content-style">Lana
+														Wachowski</span>
+												</p>
+												<p>
+													Quốc gia: <span class="modal-content-style">Mỹ</span>
+												</p>
+												<p>
+													Năm sản xuất: <span class="modal-content-style">2021</span>
+												</p>
+												<p>
+													Thời lượng: <span class="modal-content-style">148
+														phút</span>
+												</p>
+												<p>
+													Chất lượng: <span class="modal-content-style">Bản
+														đẹp</span>
+												</p>
+												<p>
+													Độ phân giải: <span class="modal-content-style">Full
+														HD</span>
+												</p>
+												<p>
+													Ngôn ngữ: <span class="modal-content-style">Phụ đề
+														việt</span>
+												</p>
+												<p>
+													Thể loại: <span class="modal-content-style">Chiếu
+														Rạp, Gây Cấn, Hành Động, Viễn Tưởng</span>
+												</p>
+												<p>
+													Lượt xem: <span class="modal-content-style">1.6K</span>
+												</p>
+												<p>
+													Công ty SX: <span class="modal-content-style">Đang
+														cập nhật</span>
+												</p>
 
 												<h6>Đánh giá phim (284 lượt)</h6>
 												<span class="fa fa-star checked"></span> <span
 													class="fa fa-star checked"></span> <span
 													class="fa fa-star checked"></span> <span class="fa fa-star"></span>
 												<span class="fa fa-star"></span>
+												
 												<h6>Diễn viên</h6>
 												<a class="actor-profile-item" href="#"
 													title="Diễn viên Jessica Henwick">
@@ -88,7 +119,8 @@
 												</div>
 											</div>
 											<div class="modal-footer">
-												<button id="myStopClickButton" type="button" class="btn btn-secondary myStopClickButton"
+												<button id="myStopClickButton" type="button"
+													class="btn btn-secondary myStopClickButton"
 													data-dismiss="modal">Close</button>
 												<button type="button" class="btn btn-primary">Xem
 													phim</button>
@@ -110,25 +142,55 @@
 											<div class="modal-header">
 												<h5 class="modal-title" id="exampleModalLongTitle">Mô
 													tả ngắn</h5>
-												<button type="button" class="close myStopClickButton" data-dismiss="modal"
-													aria-label="Close">
+												<button type="button" class="close myStopClickButton"
+													data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
 											</div>
 											<div class="modal-body">
 												<h4>Tên phim: MẮT BIẾC</h4>
 
-												<p>Trạng thái:<span class="modal-content-style"> HD Vietsub + TM</span></p>
-												<p>Đạo diễn: <span class="modal-content-style">Lana Wachowski</span></p>
-												<p>Quốc gia: <span class="modal-content-style">Mỹ</span></p>
-												<p>Năm sản xuất: <span class="modal-content-style">2021</span></p>
-												<p>Thời lượng: <span class="modal-content-style">148 phút</span></p>
-												<p>Chất lượng: <span class="modal-content-style">Bản đẹp</span></p>
-												<p>Độ phân giải: <span class="modal-content-style">Full HD</span></p>
-												<p>Ngôn ngữ: <span class="modal-content-style">Phụ đề việt</span></p>
-												<p>Thể loại: <span class="modal-content-style">Chiếu Rạp, Gây Cấn, Hành Động, Viễn Tưởng</span></p>
-												<p>Lượt xem: <span class="modal-content-style">1.6K</span></p>
-												<p>Công ty SX: <span class="modal-content-style">Đang cập nhật</span></p>
+												<p>
+													Trạng thái:<span class="modal-content-style"> HD
+														Vietsub + TM</span>
+												</p>
+												<p>
+													Đạo diễn: <span class="modal-content-style">Lana
+														Wachowski</span>
+												</p>
+												<p>
+													Quốc gia: <span class="modal-content-style">Mỹ</span>
+												</p>
+												<p>
+													Năm sản xuất: <span class="modal-content-style">2021</span>
+												</p>
+												<p>
+													Thời lượng: <span class="modal-content-style">148
+														phút</span>
+												</p>
+												<p>
+													Chất lượng: <span class="modal-content-style">Bản
+														đẹp</span>
+												</p>
+												<p>
+													Độ phân giải: <span class="modal-content-style">Full
+														HD</span>
+												</p>
+												<p>
+													Ngôn ngữ: <span class="modal-content-style">Phụ đề
+														việt</span>
+												</p>
+												<p>
+													Thể loại: <span class="modal-content-style">Chiếu
+														Rạp, Gây Cấn, Hành Động, Viễn Tưởng</span>
+												</p>
+												<p>
+													Lượt xem: <span class="modal-content-style">1.6K</span>
+												</p>
+												<p>
+													Công ty SX: <span class="modal-content-style">Đang
+														cập nhật</span>
+												</p>
 
 												<h6>Đánh giá phim (284 lượt)</h6>
 												<span class="fa fa-star checked"></span> <span
@@ -157,7 +219,8 @@
 												</div>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary myStopClickButton"
+												<button type="button"
+													class="btn btn-secondary myStopClickButton"
 													data-dismiss="modal">Close</button>
 												<button type="button" class="btn btn-primary">Xem
 													phim</button>
@@ -186,47 +249,125 @@
 										<div class="modal-header">
 											<h5 class="modal-title" id="exampleModalLongTitle">Mô tả
 												ngắn</h5>
-											<button type="button" class="close myStopClickButton" data-dismiss="modal"
-												aria-label="Close">
+											<button type="button" class="close myStopClickButton"
+												data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
 										<div class="modal-body">
 											<h4>Tên phim: ${poster.title}</h4>
 
-											<p>Trạng thái:<span class="modal-content-style"> HD Vietsub + TM</span></p>
-												<p>Đạo diễn: <span class="modal-content-style">${poster.author}</span></p>
-												<p>Quốc gia: <span class="modal-content-style">Việt Nam</span></p>
-												<p>Năm sản xuất: <span class="modal-content-style">${poster.publishDate}</span></p>
-												<p>Thời lượng: <span class="modal-content-style">${poster.filmLength}</span></p>
-												<p>Chất lượng: <span class="modal-content-style">Bản đẹp</span></p>
-												<p>Độ phân giải: <span class="modal-content-style">Full HD</span></p>
-												<p>Ngôn ngữ: <span class="modal-content-style">Phụ đề việt</span></p>
-												<p>Thể loại: <span class="modal-content-style">${poster.categoryName}</span></p>
-												<p>Lượt xem: <span class="modal-content-style">1.6K</span></p>
-												<p>Công ty SX: <span class="modal-content-style">Đang cập nhật</span></p>
+											<p>
+												Trạng thái:<span class="modal-content-style"> HD
+													Vietsub + TM</span>
+											</p>
+											<p>
+												Đạo diễn: <span class="modal-content-style">${poster.author}</span>
+											</p>
+											<p>
+												Quốc gia: <span class="modal-content-style">Việt Nam</span>
+											</p>
+											<p>
+												Năm sản xuất: <span class="modal-content-style">${poster.publishDate}</span>
+											</p>
+											<p>
+												Thời lượng: <span class="modal-content-style">${poster.filmLength}</span>
+											</p>
+											<p>
+												Chất lượng: <span class="modal-content-style">Bản đẹp</span>
+											</p>
+											<p>
+												Độ phân giải: <span class="modal-content-style">Full
+													HD</span>
+											</p>
+											<p>
+												Ngôn ngữ: <span class="modal-content-style">Phụ đề
+													việt</span>
+											</p>
+											<p>
+												Thể loại: <span class="modal-content-style">${poster.categoryName}</span>
+											</p>
+											<p>
+												Lượt xem: <span class="modal-content-style">1.6K</span>
+											</p>
+											<p>
+												Công ty SX: <span class="modal-content-style">Đang
+													cập nhật</span>
+											</p>
 
-											<h6>Đánh giá phim (284 lượt)</h6>
-											<span class="fa fa-star checked"></span> <span
-												class="fa fa-star checked"></span> <span
-												class="fa fa-star checked"></span> <span class="fa fa-star"></span>
-											<span class="fa fa-star"></span>
+											<h6>Đánh giá phim (${poster.quantityRate} lượt)</h6>
+											
+													<span class="fa fa-star fa-star-${poster.id}"></span>
+												 	<span class="fa fa-star fa-star-${poster.id}"></span>
+												  	<span class="fa fa-star fa-star-${poster.id}"></span>
+												  	<span class="fa fa-star fa-star-${poster.id}"></span>
+													<span class="fa fa-star fa-star-${poster.id}"></span>
+
+													
+											<div style="padding: 10px 0 5px 0">
+													<select id="selectRate_${poster.id}" style="height: 30px;" class="form-select" aria-label="Default select example">
+														<option value="0">Đánh giá của bạn</option>
+														<c:forEach items="${listRate}" var="item">
+														  <option value="${item.starNum}">${item.starDescription}</option>
+														 </c:forEach>
+													</select>
+													<span id="textSuccess_${poster.id}" class="text-success"></span>
+													<span id="textFail_${poster.id}" class="text-danger"></span>
+												</div>
+												<button id="btnRate_${poster.id}" type="button" style="margin: 0 0 10px 0;" class="btn btn-info">Chọn</button>
+												<script>
+													$('#btnRate_${poster.id}').click(function() {
+														var starNum = $('#selectRate_${poster.id} :selected').val();
+														if(starNum != "0") {
+															var filmId = "${poster.id}";
+															var data = {
+																starNum : starNum,
+																filmId : filmId
+															}
+															console.log(data);
+															var domSuccess = $('#textSuccess_${poster.id}');
+															var domError = $('#textFail_${poster.id}');
+															rateFilm(data, domSuccess, domError);
+														}
+														else {
+															$('#textFail_${poster.id}').html("Vui lòng chọn đánh giá!");
+															$('#textFail_${poster.id}').fadeToggle(1500);
+														}
+													});
+													
+													
+													// get star
+													var everageStar = "${poster.everageRate}";
+													var rates = $('.fa-star-${poster.id}');
+													for(var i = 0; i < 5; i++){
+														if(i < everageStar) {
+															rates[i].className += " checked";
+														}
+													}
+													//console.log(rates);
+												</script>
 											<h6>Diễn viên</h6>
-											<a class="actor-profile-item" href="#"
-												title="Diễn viên Jessica Henwick">
-												<div class="actor-name">
-													<span class="actor-name-a" itemprop="name">${poster.actor}</span>
+											
+												<div class="actor-name-${poster.id}">
+													<script>
+														var strNameActor = "${poster.actor}";
+														var arrNameActor = strNameActor.trim().split(";");
+														for(var i = 0; i<arrNameActor.length; i++) {
+															$('.actor-name-${poster.id}').append("<p class='actor-name-a' itemprop='name'><a href='#'>"+arrNameActor[i]+"</a></p>")
+														}
+													</script>
 												</div>
-											</a>
+
 											<h6>Trailer:</h6>
-												<!-- 16:9 aspect ratio -->
-												<div class="embed-responsive embed-responsive-4by3">
-													<iframe class="embed-responsive-item myVideoClass"
-														src="${poster.trailer}"></iframe>
-												</div>
+											<!-- 16:9 aspect ratio -->
+											<div class="embed-responsive embed-responsive-4by3">
+												<iframe class="embed-responsive-item myVideoClass"
+													src="${poster.trailer}"></iframe>
+											</div>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary myStopClickButton"
+											<button type="button"
+												class="btn btn-secondary myStopClickButton"
 												data-dismiss="modal">Close</button>
 											<button type="button" class="btn btn-primary">Xem
 												phim</button>
@@ -317,15 +458,31 @@
 			visitCount = 1;
 			localStorage.setItem("page_view", visitCount);
 		}
+
+		$('.myStopClickButton').click(function() {
+			$('.myVideoClass').each(function() {
+				var el_src = $(this).attr("src");
+				$(this).attr("src", el_src);
+			});
+		});
 		
-		 $('.myStopClickButton').click(function(){
-		      $('.myVideoClass').each(function(){
-		        var el_src = $(this).attr("src");
-		        $(this).attr("src",el_src);
-		      });
-		    });
-		 
-		
+		function rateFilm(data, domSuccess, domError) {
+	        $.ajax({
+	            url: '/api/film/rate',
+	            type: 'POST',
+	            contentType: 'application/json',
+	            data: JSON.stringify(data),
+	            success: function (result) {
+	            	// alert(result);
+	            	domSuccess.html("Đánh giá thành công!");
+	            	domSuccess.fadeToggle(1500);
+	            },
+	            error: function (error) {
+	            	domError.html("Đánh giá thất bại!");
+	            	domError.fadeToggle(1500);
+	            }
+	        });
+		}
 	</script>
 </body>
 </html>
