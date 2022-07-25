@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -63,4 +64,7 @@ public class FilmEntity extends BaseEntity {
 	@JoinTable(name = "film_rate", joinColumns = @JoinColumn(name = "filmid"),
 									inverseJoinColumns = @JoinColumn(name = "rateid"))
 	private List<RateEntity> rates = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "film")
+	private List<EpisodeEntity> episodes = new ArrayList<>();
 }

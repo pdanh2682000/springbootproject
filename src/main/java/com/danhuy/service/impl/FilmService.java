@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.danhuy.converter.CustomFilmConverter;
 import com.danhuy.dto.FilmDTO;
 import com.danhuy.entity.CategoryEntity;
+import com.danhuy.entity.EpisodeEntity;
 import com.danhuy.entity.FilmEntity;
 import com.danhuy.entity.RateEntity;
 import com.danhuy.repository.CategoryRepository;
@@ -129,6 +130,15 @@ public class FilmService implements IFilmService {
 			FilmDTO dto = mapper.map(entity.get(), FilmDTO.class);
 			// custom convert
 			dto = converter.toDTO(dto, entity.get());
+			dto.setQuantityRate(entity.get().getRates().size());
+			dto.setEverageRate(everageRatePerFilm(entity.get()));
+			// episode
+			List<EpisodeEntity> listEpisode = entity.get().getEpisodes();
+			List<String> listEpisodeStr = new ArrayList<>();
+			for(EpisodeEntity e : listEpisode) {
+				listEpisodeStr.add(e.getEpisode_url());
+			}
+			dto.setEpisodesUrl(listEpisodeStr);
 			return dto;
 		}
 		return null;

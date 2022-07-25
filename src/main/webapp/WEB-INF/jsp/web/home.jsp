@@ -224,6 +224,7 @@
 													data-dismiss="modal">Close</button>
 												<button type="button" class="btn btn-primary">Xem
 													phim</button>
+												
 											</div>
 										</div>
 									</div>
@@ -369,8 +370,9 @@
 											<button type="button"
 												class="btn btn-secondary myStopClickButton"
 												data-dismiss="modal">Close</button>
-											<button type="button" class="btn btn-primary">Xem
+											<a href="/watch/${poster.id}"><button type="button" class="btn btn-primary">Xem
 												phim</button>
+											</a>
 										</div>
 									</div>
 								</div>

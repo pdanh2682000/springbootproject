@@ -1,4 +1,7 @@
 package com.danhuy.dto;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -41,4 +44,6 @@ public class FilmDTO extends AbstractDTO<FilmDTO> {
 	// more info
 	private Integer quantityRate = 0;
 	private Integer everageRate = 0;
+	// video
+	private List<String> episodesUrl = new ArrayList<>();
 }

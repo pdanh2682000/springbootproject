@@ -53,6 +53,11 @@
 		ul.menu li.menu-item a:hover {
 			text-decoration: none;
 		}
+		
+		.dark-mode {
+			background-color: black !important;
+			color: white;
+		}
 	</style>
 </head>
 <body>
