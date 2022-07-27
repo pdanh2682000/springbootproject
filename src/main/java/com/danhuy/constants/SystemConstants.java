@@ -15,12 +15,17 @@ public final class SystemConstants {
 	public static final int DEFAULT_LIMIT_PAGE = 5;
 	public static final int DEFAULT_PAGE = 1;
 	
+	public static final int DEFAULT_EPISODE_MOVIE = 0;
+	public static final int DEFAULT_LENGTH_EPISODE_MOVIE = 0;
+	public static final String DEFAULT_EPISODE_MOVIE_STR = "Full";
+	
 	public static final String DEFAULT_ROLE = "ROLE_USER";
 	
 	public static final String POSTER_CONTENT_STR = "/poster_content/";
 	public static final String POSTER_SLIDE_STR = "/poster_slide/";
 	public static final String UPLOAD_POSTER_CONTENT = "poster_content";
 	public static final String UPLOAD_AVATAR = "avatar";
+	public static final String UPLOAD_VIDEO = "movies";
 	
 	public static final String BINDING_FILM_ERROR = "film_binding_error";
 	public static final String CREATE_FILM_SUCCESS = "create_film_success";
@@ -46,6 +51,10 @@ public final class SystemConstants {
 	public static final String CREATE_ROLE_SUCCESS = "create_role_success";
 	public static final String CREATE_ROLE_FAIL = "create_role_fail";
 	public static final String EXISTS_CODE = "exists_code";
+	
+	public static final String BINDING_EPISODE_ERROR = "episode_binding_error";
+	public static final String CREATE_EPISODE_SUCCESS = "create_episode_success";
+	public static final String EDIT_EPISODE_FAIL = "edit_episode_fail";
 	
 	public static final String USERNAME_EMAIL = "anhb1812252@student.ctu.edu.vn";
 	public static final String PASSWORD_EMAIL = "h!KaA4Ap";

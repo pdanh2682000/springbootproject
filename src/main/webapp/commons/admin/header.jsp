@@ -208,6 +208,11 @@
 							class="nav-link" id="menu_category"> <i class="far fa-circle nav-icon"></i>
 								<p>Quản lý thể loại</p>
 							</a></li>
+							<li class="nav-item">
+									<a href="<c:url value='/admin/episode/list' />" class="nav-link" id="menu_episode">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Episode</p>
+							</a></li>
 						</security:authorize>
 						<security:authorize access="!hasRole('ROLE_ADMIN_FILM')">
 							<li class="nav-item" style="pointer-events:none;opacity:0.6;">
@@ -219,7 +224,13 @@
 							class="nav-link" id="menu_category"> <i class="far fa-circle nav-icon"></i>
 								<p>Quản lý thể loại</p>
 							</a></li>
+							<li class="nav-item" style="pointer-events:none;opacity:0.6;">
+									<a href="<c:url value='/admin/episode/list' />" class="nav-link" id="menu_episode">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Episode</p>
+							</a></li>
 						</security:authorize>
+					
 					
 						<security:authorize access="hasRole('ROLE_ADMIN_USER')">
 							<li class="nav-item"><a href="<c:url value='/admin/role/list' />" class="nav-link" id="menu_role">

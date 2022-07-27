@@ -13,10 +13,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class EpisodeDTO extends AbstractDTO<EpisodeDTO>{
 
-	private String episode_name;
+	private String episodeName;
 	private String episode;
-	private String episode_description;
+	private String episodeDescription;
 	
-	@NotBlank
-	private String episode_url;
+	@NotBlank(message = "{blankFilmId}")
+	private String filmId;
+	private String filmName;
+	
+	@NotBlank(message = "{blankEpisodeUrl}")
+	private String episodeUrl;
 }

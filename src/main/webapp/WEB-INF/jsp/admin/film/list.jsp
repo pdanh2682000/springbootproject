@@ -55,6 +55,7 @@
 					<th>Thời lượng</th>
 					<th>Năm sản xuất</th>
 					<th>Url</th>
+					<th>Trailer</th>
 					<th>Thao tác</th>
 				</tr>
 			</thead>
@@ -72,6 +73,7 @@
 						<td>${item.filmLength}</td>
 						<td>${item.publishDate}</td>
 						<td>${item.url}</td>
+						<td>${item.trailer}</td>
 						<td style="text-align: center;">
 							<c:url var="updateFilmURL" value="./edit">
 								<c:param name="id" value="${item.id}"></c:param>

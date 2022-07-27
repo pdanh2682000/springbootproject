@@ -22,17 +22,17 @@ import lombok.NoArgsConstructor;
 public class EpisodeEntity extends BaseEntity{
 
 	@Column
-	private String episode_name;
+	private String episodeName;
 	
 	@Column
 	private String episode; // full, 1, 2, 3, ...
 	
 	@Column
-	private String episode_description;
+	private String episodeDescription;
 	
 	@Column
 	@NotBlank
-	private String episode_url;
+	private String episodeUrl;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "film_id")

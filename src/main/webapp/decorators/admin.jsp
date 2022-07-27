@@ -103,6 +103,11 @@
 				    $("#menu_user").addClass('active');
 					break;
 				}
+				case 'menu_episode': {
+				    $("#menu_episode").removeClass('active');
+				    $("#menu_episode").addClass('active');
+					break;
+				}
 			}
 		})
 	

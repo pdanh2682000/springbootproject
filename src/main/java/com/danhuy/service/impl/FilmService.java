@@ -1,7 +1,9 @@
 package com.danhuy.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -136,7 +138,7 @@ public class FilmService implements IFilmService {
 			List<EpisodeEntity> listEpisode = entity.get().getEpisodes();
 			List<String> listEpisodeStr = new ArrayList<>();
 			for(EpisodeEntity e : listEpisode) {
-				listEpisodeStr.add(e.getEpisode_url());
+				listEpisodeStr.add(e.getEpisodeUrl());
 			}
 			dto.setEpisodesUrl(listEpisodeStr);
 			return dto;
@@ -173,5 +175,16 @@ public class FilmService implements IFilmService {
 			return rateEntity.size();
 		}
 		return 0;
+	}
+
+	@Override
+	public Map<String, String> findAllName() {
+		
+		Map<String, String> results = new HashMap<>();
+		List<FilmEntity> entities = filmRepository.findAll();
+		for(FilmEntity e : entities) {
+			results.put(e.getId().toString(), e.getTitle());
+		}
+		return results;
 	}
 }
