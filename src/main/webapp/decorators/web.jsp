@@ -137,7 +137,7 @@ body{
 .comment{
     border: 1px solid rgba(16, 46, 46, 1);
     background-color: rgba(16, 46, 46, 0.973);
-    float: left;
+    float: none;
     border-radius: 5px;
     padding-left: 40px;
     padding-right: 30px;

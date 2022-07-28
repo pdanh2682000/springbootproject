@@ -70,7 +70,7 @@
 								</div>
 								<div class="col-lg-4 px-xl-10" id="detailInfomation"
 									style="margin-top: -80px !important">
-									<h4>Tên phim: ${poster.title}</h4>
+									<h4 style="color: inherit;">Tên phim: ${poster.title}</h4>
 									<p>
 										Thời lượng: <span class="modal-content-style">${poster.filmLength}</span>
 									</p>
@@ -174,8 +174,7 @@
 						<nav class="navbar navbar-expand-sm navbar-dark">
 							<img src="https://i.imgur.com/CFpa3nK.jpg" width="20" height="20"
 								class="d-inline-block align-top rounded-circle" alt=""> <a
-								class="navbar-brand ml-2" href="#" data-abc="true"><a href="#">Rib
-								Simpson</a>
+								class="navbar-brand ml-2" href="#" data-abc="true"><a href="#">${poster.author}</a>
 							<button class="navbar-toggler" type="button"
 								data-toggle="collapse" data-target="#navbarColor02"
 								aria-controls="navbarColor02" aria-expanded="false"
@@ -188,45 +187,30 @@
 							<div class="container" style="background: #2193b0;">
 								<div class="row">
 									<div class="col-sm-5 col-md-6 col-12 pb-4">
-										<h1>Comments</h1>
-										<div class="comment mt-4 text-justify float-left">
+										<h1 id="contentComments">Comments</h1>
+										
+										<!-- <div class="comment mt-4 text-justify">
 											<img src="https://i.imgur.com/yTFUilP.jpg" alt=""
 												class="rounded-circle" width="40" height="40">
-											<h4>Jhon Doe</h4>
-											<span>- 20 October, 2018</span> <br>
-											<p>Lorem ipsum dolor sit, amet consectetur adipisicing
+											<h6 style="margin-bottom: 0; padding-bottom: 0;">Jhon Doe</h6>
+											<span style="font-size: 12px; margin-top: 0; padding-top: 0;">- 20 October, 2018</span> <br>
+											<p style="font-size: 14px;">Lorem ipsum dolor sit, amet consectetur adipisicing
 												elit. Accusamus numquam assumenda hic aliquam vero sequi
 												velit molestias doloremque molestiae dicta?</p>
 										</div>
-										
-										<div class="comment mt-4 text-justify">
-											<img src="https://i.imgur.com/yTFUilP.jpg" alt=""
-												class="rounded-circle" width="40" height="40">
-											<h4>Jhon Doe</h4>
-											<span>- 20 October, 2018</span> <br>
-											<p>Lorem ipsum dolor sit, amet consectetur adipisicing
-												elit. Accusamus numquam assumenda hic aliquam vero sequi
-												velit molestias doloremque molestiae dicta?</p>
-										</div>
-										
+										 -->
 									</div>
 									<div
 										class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-										<form id="algin-form">
-											<div class="form-group">
+										<form id="algin-form" >
+											<div class="form-group" id="formPostComment">
+												
 												<h4>Leave a comment</h4>
 												<label for="message">Message</label>
-												<textarea name="msg" id="" msg cols="30" rows="5"
+												<textarea name="msg" id="msg" msg cols="30" rows="5"
 													class="form-control" style="background-color: black; color:white"></textarea>
 											</div>
-											<div class="form-group">
-												<label for="name">Name</label> <input type="text"
-													name="name" id="fullname" class="form-control">
-											</div>
-											<div class="form-group">
-												<label for="email">Email</label> <input type="text"
-													name="email" id="email" class="form-control">
-											</div>
+
 											<div class="form-group">
 												<p class="text-secondary">
 													If you have a <a href="#" class="alert-link">gravatar
@@ -243,6 +227,103 @@
 												<button type="button" id="post" class="btn">Post
 													Comment</button>
 											</div>
+											<script>
+												const DEFAULT_LIMIT_COMMENT = 2;
+												const DEFAULT_PAGE_COMMENT = 1;
+											
+												function postComment(data) {
+											        $.ajax({
+											            url: '/web/api/comment',
+											            type: 'POST',
+											            async: false, 
+											            contentType: 'application/json',
+											            data: JSON.stringify(data),
+											            success: function (result) {
+											            	 //alert(result);
+											            	 //alert("post");
+											            	 if(result != "Not authenticated")
+											            		$('#formPostComment').append("<div class='alert alert-success messageAndAlertSuccess' style='margin-top: 5px;' id='messageAndAlertSuccess'><h6>Đã post comment!</h6></div>");
+											            	 else
+											            		$('#formPostComment').append("<div class='alert alert-danger messageAndAlertFail' style='margin-top: 5px;' id='messageAndAlertFail'><h6>Bạn cần đăng nhập!</h6></div>");
+											            	
+											            	$('.messageAndAlertSuccess').fadeOut(3000);
+											            	$('.messageAndAlertFail').fadeOut(3000);
+											            },
+											            error: function (error) {
+											            	//alert(error);
+											            	$('#formPostComment').append("<div class='alert alert-danger messageAndAlertFail' style='margin-top: 5px;' id='messageAndAlertFail'><h6>Post comment thất bại!</h6></div>");
+											            	$('.messageAndAlertFail').fadeOut(3000);
+											            }
+											        });
+												}
+												
+												function getComment(page, limit) {
+											        $.ajax({
+											            url: '/web/api/comment?filmId=${poster.id}&pageComment='+page+'&limitComment='+limit,
+											            type: 'GET',
+											            async: false, 
+											            success: function (result) {
+											            	//alert("get");
+											            	//console.log(result);
+											            	for(var i=0; i<result.results.length; i++) {
+											            		//console.log(result[i].content);
+											            		$('#contentComments').append(`
+											            			<div class="comment mt-4 text-justify myComment">
+																		<img src="\${result.results[i].avatarUser}" alt=""
+																			class="rounded-circle" width="40" height="40">
+																		<h6 style="margin-bottom: 0; padding-bottom: 0;">\${result.results[i].userName}</h6>
+																		<span style="font-size: 12px; margin-top: 0; padding-top: 0;">- \${new Date(result.results[i].createdDate).toString().split(' ').slice(0, 5).join(' ')}</span> <br>
+																		<p style="font-size: 14px;">\${result.results[i].content}</p>
+																	</div>	
+											            		`);
+											            	}
+											            	if(result.totalItem > DEFAULT_LIMIT_COMMENT) {
+											            		$('#btnMoreComment').remove(); // clear old
+											            		$('#contentComments').append(`
+											            			<button style="background-color: #ecb21f;
+											            				border: none;
+											            				  color: black;
+											            				  padding: 15px 32px;
+											            				  text-align: center;
+											            				  text-decoration: none;
+											            				  display: inline-block;
+											            				  font-size: 16px;
+											            			" id="btnMoreComment">Xem thêm bình luận</button>
+											            		`);
+											            		$('#btnMoreComment').click(function (){
+											            			$('.myComment').remove(); // clear old
+											            			getComment(DEFAULT_PAGE_COMMENT, limit + DEFAULT_LIMIT_COMMENT);
+																});
+											            	}
+											            },
+											            error: function (error) {
+											            	console.log(error);
+											            }
+											        });
+												}
+												
+												$('#post').click(function (){
+													var msg = $('#msg').val();
+													if(msg != "") {
+														var filmId = "${poster.id}";
+														var data = {
+															msg : msg,
+															filmId : filmId
+														}
+														$('.myComment').remove(); // clear old
+														postComment(data);
+														getComment(DEFAULT_PAGE_COMMENT, DEFAULT_LIMIT_COMMENT);
+													}
+												});
+												
+												
+												
+												$(document).ready(function() {
+													$('.myComment').remove();  // clear old
+													getComment(DEFAULT_PAGE_COMMENT, DEFAULT_LIMIT_COMMENT); 
+												});
+												
+											</script>
 										</form>
 									</div>
 								</div>
@@ -312,6 +393,8 @@
 				window.location.href = "/watch/${poster.id}?ep=${ep_current + 1}";
 			}
 		};
+		
+		
 	</script>
 </body>
 </html>

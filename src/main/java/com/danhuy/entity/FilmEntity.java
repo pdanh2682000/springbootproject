@@ -67,4 +67,7 @@ public class FilmEntity extends BaseEntity {
 	
 	@OneToMany(mappedBy = "film")
 	private List<EpisodeEntity> episodes = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "film")
+	private List<UserCommentFilmEntity> comments = new ArrayList<>();
 }

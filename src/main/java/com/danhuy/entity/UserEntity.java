@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -68,4 +69,7 @@ public class UserEntity extends BaseEntity {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "userid"),
 									inverseJoinColumns = @JoinColumn(name = "roleid"))
 	private List<RoleEntity> roles = new ArrayList<>();
+
+	@OneToMany(mappedBy = "user")
+	private List<UserCommentFilmEntity> comments = new ArrayList<>();
 }

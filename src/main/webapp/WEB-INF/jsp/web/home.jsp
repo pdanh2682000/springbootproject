@@ -47,7 +47,7 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<h4>Tên phim: XÓM TRỌ 3D</h4>
+												<h4 style="color: black;">Tên phim: XÓM TRỌ 3D</h4>
 
 												<p>
 													Trạng thái:<span class="modal-content-style"> HD
@@ -148,7 +148,7 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<h4>Tên phim: MẮT BIẾC</h4>
+												<h4 style="color: black;">Tên phim: MẮT BIẾC</h4>
 
 												<p>
 													Trạng thái:<span class="modal-content-style"> HD
@@ -256,7 +256,7 @@
 											</button>
 										</div>
 										<div class="modal-body">
-											<h4>Tên phim: ${poster.title}</h4>
+											<h4 style="color: black;">Tên phim: ${poster.title}</h4>
 
 											<p>
 												Trạng thái:<span class="modal-content-style"> HD
