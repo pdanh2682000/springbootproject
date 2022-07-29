@@ -17,4 +17,5 @@ public interface IUploadFileService {
 	 * */
 	public byte[] readFileContent(String fileName);
 	public void deleteAllFiles();
+	public void deleteFile(String path);
 }

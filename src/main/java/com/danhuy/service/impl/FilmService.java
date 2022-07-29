@@ -22,6 +22,7 @@ import com.danhuy.repository.CategoryRepository;
 import com.danhuy.repository.FilmRepository;
 import com.danhuy.repository.RateRepository;
 import com.danhuy.service.IFilmService;
+import com.danhuy.service.IUploadFileService;
 
 @Service
 public class FilmService implements IFilmService {
@@ -40,6 +41,9 @@ public class FilmService implements IFilmService {
 	
 	@Autowired
 	private RateRepository rateRepository;
+	
+	@Autowired
+	private IUploadFileService uploadFileService;
 	
 	@Override
 	public List<FilmDTO> findAll() {
@@ -107,7 +111,6 @@ public class FilmService implements IFilmService {
 		FilmEntity filmEntity = new FilmEntity();
 		CategoryEntity categoryEntity = categoryRepository.findOneByCode(dto.getCategoryCode());
 		
-		filmEntity.setPosterSlide(0); // default is poster content
 		// update
 		if(dto.getId() != null) {
 			Optional<FilmEntity> oldFilmEntity = filmRepository.findById(dto.getId());
@@ -121,6 +124,8 @@ public class FilmService implements IFilmService {
 		else {
 			filmEntity = mapper.map(dto, FilmEntity.class);
 		}
+		if(filmEntity.getPosterSlide() == null)
+			filmEntity.setPosterSlide(0); // default is poster content
 		filmEntity.setCategory(categoryEntity);
 		return mapper.map(filmRepository.save(filmEntity), FilmDTO.class);
 	}
@@ -150,7 +155,12 @@ public class FilmService implements IFilmService {
 	@Override
 	@Transactional
 	public void delete(long[] ids) {
+		
 		for(long id : ids) {
+			Optional<FilmEntity> entity = filmRepository.findById(id);
+			if(entity.isPresent()) {
+				uploadFileService.deleteFile(entity.get().getUrl()); // delete file poster
+			}
 			filmRepository.deleteById(id);
 		}
 	}

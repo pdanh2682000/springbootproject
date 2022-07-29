@@ -124,12 +124,18 @@ public class FilmController {
 			
 			// upload file
 			if(file != null && !file.isEmpty()) {
-				if(dto.getPosterSlide() == 0) {
-					String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
-					dto.setUrl(generatedFilename);
+				if(dto.getPosterSlide() != null ) {
+					if(dto.getPosterSlide() == 0) {
+						String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
+						dto.setUrl(generatedFilename);
+					}
+					else if(dto.getPosterSlide() == 1) {
+						String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_SLIDE);
+						dto.setUrl(generatedFilename);
+					}
 				}
-				else if(dto.getPosterSlide() == 1) {
-					String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_SLIDE);
+				else {
+					String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
 					dto.setUrl(generatedFilename);
 				}
 			}

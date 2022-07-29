@@ -3,6 +3,7 @@ package com.danhuy.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -65,9 +66,9 @@ public class FilmEntity extends BaseEntity {
 									inverseJoinColumns = @JoinColumn(name = "rateid"))
 	private List<RateEntity> rates = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "film")
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<EpisodeEntity> episodes = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "film")
+	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UserCommentFilmEntity> comments = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
 package com.danhuy.service.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -107,6 +109,20 @@ public class UploadFileService implements IUploadFileService {
 	@Override
 	public void deleteAllFiles() {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void deleteFile(String path) {
+		
+		String prePath = "src/main/resources/static";
+		
+		try {
+			FileUtils.touch(new File(prePath + path));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    File fileToDelete = FileUtils.getFile(prePath + path);
+	    FileUtils.deleteQuietly(fileToDelete);
 	}
 
 }
