@@ -24,6 +24,7 @@ public class CustomFilmConverter {
 		result.setShortDescription(dto.getShortDescription());
 		result.setTitle(dto.getTitle());
 		result.setUrl(dto.getUrl());
+		result.setPosterSlide(dto.getPosterSlide());
 		return result;
 	}
 }

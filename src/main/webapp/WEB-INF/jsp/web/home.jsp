@@ -17,7 +17,7 @@
 						<ul class="slides">
 
 							<c:forEach items="${poster_slide.results}" var="poster">
-								<li><img src="<c:url value='${poster.url}' />"
+								<li><img style="max-width: 870px; max-height: 518px;" src="<c:url value='${poster.url}' />"
 									alt="${poster.title}"></li>
 							</c:forEach>
 

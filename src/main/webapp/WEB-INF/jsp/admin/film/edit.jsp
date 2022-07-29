@@ -80,6 +80,11 @@
 						id="inputTrailer" placeholder="https://www.youtube.com/embed/..." />
 					<form:errors path="trailer" cssClass="error" />
 				</div>
+				<div class="form-group" id="myRadioButton">
+					<form:label path="posterSlide">Poster slide:</form:label>
+					<form:radiobuttons path="posterSlide" items="${contentSlide}"/>  
+					<form:errors path="posterSlide" cssClass="error" />
+				</div>
 				<form:hidden path="id" id="filmId"/>
 				<c:if test="${not empty filmDTO.id}">
 					<button type="submit" class="btn btn-primary">Cập nhật</button>

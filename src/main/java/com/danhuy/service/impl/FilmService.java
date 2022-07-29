@@ -106,6 +106,8 @@ public class FilmService implements IFilmService {
 		
 		FilmEntity filmEntity = new FilmEntity();
 		CategoryEntity categoryEntity = categoryRepository.findOneByCode(dto.getCategoryCode());
+		
+		filmEntity.setPosterSlide(0); // default is poster content
 		// update
 		if(dto.getId() != null) {
 			Optional<FilmEntity> oldFilmEntity = filmRepository.findById(dto.getId());
@@ -119,7 +121,6 @@ public class FilmService implements IFilmService {
 		else {
 			filmEntity = mapper.map(dto, FilmEntity.class);
 		}
-		filmEntity.setPosterSlide(0); // default is poster content
 		filmEntity.setCategory(categoryEntity);
 		return mapper.map(filmRepository.save(filmEntity), FilmDTO.class);
 	}

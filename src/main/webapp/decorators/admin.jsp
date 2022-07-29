@@ -34,6 +34,14 @@
 	table th,td {
 		text-align: center;
 	}
+	
+	input[type=radio] {
+		margin-left: 40px;
+	}
+	
+	#myRadioButton label {
+		padding: 10px;
+	}
 </style>
 </head>
 <body

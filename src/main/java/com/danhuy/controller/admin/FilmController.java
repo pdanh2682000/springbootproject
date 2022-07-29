@@ -1,7 +1,9 @@
 package com.danhuy.controller.admin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -87,6 +89,10 @@ public class FilmController {
 				mav.addObject(filmService.findById(id));
 			}
 			mav.addObject("categories", categoryService.findAll());
+			Map<Integer, String> contentSlide = new HashMap<>();
+			contentSlide.put(SystemConstants.POSTER_SLIDE, SystemConstants.HAVE_POSTER_SLIDE);
+			contentSlide.put(SystemConstants.POSTER_CONTENT, SystemConstants.NO_POSTER_SLIDE);
+			mav.addObject("contentSlide", contentSlide);
 
 			if (request.getParameter("message") != null && request.getParameter("alert") != null)
 				MessageUtils.setMessageAndAlertForView(request.getParameter("message"), request.getParameter("alert"),
@@ -118,8 +124,14 @@ public class FilmController {
 			
 			// upload file
 			if(file != null && !file.isEmpty()) {
-				String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
-				dto.setUrl(generatedFilename);
+				if(dto.getPosterSlide() == 0) {
+					String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
+					dto.setUrl(generatedFilename);
+				}
+				else if(dto.getPosterSlide() == 1) {
+					String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_SLIDE);
+					dto.setUrl(generatedFilename);
+				}
 			}
 			
 			// update

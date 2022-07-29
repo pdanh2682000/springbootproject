@@ -19,11 +19,15 @@ public final class SystemConstants {
 	public static final int DEFAULT_LENGTH_EPISODE_MOVIE = 0;
 	public static final String DEFAULT_EPISODE_MOVIE_STR = "Full";
 	
+	public static final String HAVE_POSTER_SLIDE = "slide";
+	public static final String NO_POSTER_SLIDE = "No slide";
+	
 	public static final String DEFAULT_ROLE = "ROLE_USER";
 	
 	public static final String POSTER_CONTENT_STR = "/poster_content/";
 	public static final String POSTER_SLIDE_STR = "/poster_slide/";
 	public static final String UPLOAD_POSTER_CONTENT = "poster_content";
+	public static final String UPLOAD_POSTER_SLIDE = "poster_slide";
 	public static final String UPLOAD_AVATAR = "avatar";
 	public static final String UPLOAD_VIDEO = "movies";
 	
