@@ -18,6 +18,10 @@
 			href="<c:url value='/admin' />" class="nav-link">Home</a></li>
 		<li class="nav-item d-none d-sm-inline-block"><a href="#"
 			class="nav-link">Contact</a></li>
+		<li class="nav-item d-none d-sm-inline-block"><a href="/"
+			class="nav-link">Web</a></li>
+		<li class="nav-item d-none d-sm-inline-block"><a href="/logout"
+			class="nav-link">Logout</a></li>
 	</ul>
 
 	<!-- Right navbar links -->
@@ -160,7 +164,11 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="https://github.com/pdanh2682000" class="d-block">Phan Duy Anh</a>
+				<a href="https://github.com/pdanh2682000" class="d-block">
+					<security:authorize access="isAuthenticated()">
+ 						Welcome, <security:authentication property="name"/>
+					</security:authorize>
+				</a>
 			</div>
 		</div>
 
@@ -191,18 +199,67 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="<c:url value='/admin/film/list' />" class="nav-link active">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Quản lý Film</p>
-						</a></li>
-						<li class="nav-item"><a href="<c:url value='/admin/category/list' />"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+						<security:authorize access="hasRole('ROLE_ADMIN_FILM')">
+							<li class="nav-item"><a href="<c:url value='/admin/film/list' />" class="nav-link" id="menu_film">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Film</p>
+							</a></li>
+							<li class="nav-item"><a href="<c:url value='/admin/category/list' />"
+							class="nav-link" id="menu_category"> <i class="far fa-circle nav-icon"></i>
 								<p>Quản lý thể loại</p>
-						</a></li>
-						<li class="nav-item"><a href="./index3.html" class="nav-link">
-								<i class="far fa-circle nav-icon"></i>
-								<p>Dashboard v3</p>
-						</a></li>
+							</a></li>
+							<li class="nav-item">
+									<a href="<c:url value='/admin/episode/list' />" class="nav-link" id="menu_episode">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Episode</p>
+							</a></li>
+							<li class="nav-item"><a href="<c:url value='/admin/advertise/list' />" class="nav-link" id="menu_advertise">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Advertise</p>
+							</a></li>
+						</security:authorize>
+						<security:authorize access="!hasRole('ROLE_ADMIN_FILM')">
+							<li class="nav-item" style="pointer-events:none;opacity:0.6;">
+									<a href="<c:url value='/admin/film/list' />" class="nav-link" id="menu_film">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Film</p>
+							</a></li>
+							<li class="nav-item" style="pointer-events:none;opacity:0.6;"><a href="<c:url value='/admin/category/list' />"
+							class="nav-link" id="menu_category"> <i class="far fa-circle nav-icon"></i>
+								<p>Quản lý thể loại</p>
+							</a></li>
+							<li class="nav-item" style="pointer-events:none;opacity:0.6;">
+									<a href="<c:url value='/admin/episode/list' />" class="nav-link" id="menu_episode">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Episode</p>
+							</a></li>
+							<li class="nav-item" style="pointer-events:none;opacity:0.6;"><a href="<c:url value='/admin/advertise/list' />" class="nav-link" id="menu_advertise">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Advertise</p>
+							</a></li>
+						</security:authorize>
+					
+					
+						<security:authorize access="hasRole('ROLE_ADMIN_USER')">
+							<li class="nav-item"><a href="<c:url value='/admin/role/list' />" class="nav-link" id="menu_role">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Role</p>
+							</a></li>
+							<li class="nav-item"><a href="<c:url value='/admin/user/list' />" class="nav-link" id="menu_user">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý User</p>
+							</a></li>
+						</security:authorize>
+						<security:authorize access="!hasRole('ROLE_ADMIN_USER')">
+							<li class="nav-item" style="pointer-events:none;opacity:0.6;"><a href="<c:url value='/admin/role/list' />" class="nav-link" id="menu_role">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý Role</p>
+							</a></li>
+							<li class="nav-item"  style="pointer-events:none;opacity:0.6;"><a href="<c:url value='/admin/user/list' />" class="nav-link" id="menu_user">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Quản lý User</p>
+							</a></li>
+						</security:authorize>
 					</ul></li>
 				<li class="nav-item"><a href="pages/widgets.html"
 					class="nav-link"> <i class="nav-icon fas fa-th"></i>

@@ -10,7 +10,14 @@
 <body>
 	<div class="panel panel-primary" style="padding: 20px;">
 		<div class="panel-heading">
-			<h3 class="panel-title" style="color: yellowgreen; padding-bottom: 20px;">Thêm mới Film</h3>
+		
+			<c:if test="${empty filmDTO.id}">
+					<h3 class="panel-title" style="color: yellowgreen; padding-bottom: 20px;">Thêm mới Film</h3>
+			</c:if>
+			<c:if test="${not empty filmDTO.id}">
+					<h3 class="panel-title" style="color: yellowgreen; padding-bottom: 20px;">Cập nhật Film</h3>
+			</c:if>
+		
 		</div>
 		<div class="panel-body">
 			<c:if test="${not empty message}">
@@ -27,7 +34,7 @@
 					<form:errors path="title" cssClass="error" />
 				</div>
 				<div class="form-group">
-					<form:label path="filmLength">Thể loại:</form:label>
+					<form:label path="categoryCode">Thể loại:</form:label>
 					<form:select id="categoryCode" path="categoryCode">
 				  	 	<form:option value="" label="--- Chọn thể loại ---" />
 				  	 	<form:options items="${categories}" />
@@ -35,11 +42,12 @@
 					<form:errors path="categoryCode" cssClass="error" />
 				</div>
 				<div class="form-group">
-					<input name="file" type="file" class="form-control"/>
+					<label for="poster">Poster:</label>
+					<input id="poster" name="file" type="file" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<form:label path="content">Nội dung:</form:label>
-					<form:input path="content" type="text" class="form-control"
+					<form:textarea path="content" class="form-control"
 						id="inputContent" placeholder="Kể về gia đình ..." />
 					<form:errors path="content" cssClass="error" />
 				</div>
@@ -50,7 +58,7 @@
 					<form:errors path="shortDescription" cssClass="error" />
 				</div>
 				<div class="form-group">
-					<form:label path="actor">Diễn viên:</form:label>
+					<form:label path="actor">Diễn viên ( phân biệt bởi ';' ):</form:label>
 					<form:input path="actor" type="text" class="form-control"
 						id="inputActor" placeholder="Chi Pu" />
 					<form:errors path="actor" cssClass="error" />
@@ -73,6 +81,31 @@
 						id="inputFilmLength" placeholder="1000" />
 					<form:errors path="filmLength" cssClass="error" />
 				</div>
+				<div class="form-group">
+					<form:label path="trailer">Trailer URL:</form:label>
+					<form:input path="trailer" type="text" class="form-control"
+						id="inputTrailer" placeholder="https://www.youtube.com/embed/..." />
+					<form:errors path="trailer" cssClass="error" />
+				</div>
+				<div class="form-group myRadioButton" id="myRadioButton">
+					<form:label path="posterSlide">Poster slide:</form:label>
+					<form:radiobuttons path="posterSlide" items="${contentSlide}"/>  
+					<form:errors path="posterSlide" cssClass="error" />
+				</div>
+				<div class="form-group">
+					<form:label path="advertisesId">Advertise:</form:label>
+					<form:select id="advertisesId" path="advertisesId">
+				  	 	<form:option value="" label="--- Chọn loại advertise ---" />
+				  	 	<form:options items="${advertises}" />
+					</form:select>
+					<form:errors path="advertisesId" cssClass="error" />
+				</div>
+				<div class="form-group">
+					<form:label path="premiereDate">Premiere Date:</form:label>
+					<form:input path="premiereDate" type="date" class="form-control"
+						id="inputPremiereDate" />
+					<form:errors path="premiereDate" cssClass="error" />
+				</div>
 				<form:hidden path="id" id="filmId"/>
 				<c:if test="${not empty filmDTO.id}">
 					<button type="submit" class="btn btn-primary">Cập nhật</button>
@@ -88,6 +121,10 @@
 		</div>
 	</div>
 <script>
+	var editor = ""; // data cua editor khi thay the cho textarea
+	$(document).ready(function(){
+		editor = CKEDITOR.replace('content');
+	});
 	$('#messageAndAlert').fadeOut(5000);
 </script>
 </body>

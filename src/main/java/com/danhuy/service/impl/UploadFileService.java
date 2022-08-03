@@ -1,5 +1,6 @@
 package com.danhuy.service.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.stream.Stream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -17,13 +19,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.danhuy.constants.SystemConstants;
 import com.danhuy.service.IUploadFileService;
 
 @Service
 public class UploadFileService implements IUploadFileService {
 
-	private final Path storageFolder = Paths.get("src\\main\\resources\\static\\poster_content");
+	private final String rootPath = "src\\main\\resources\\static";
+	private final Path storageFolder = Paths.get(rootPath);
 
 	public UploadFileService() {
 		try {
@@ -40,8 +42,9 @@ public class UploadFileService implements IUploadFileService {
 	}
 
 	@Override
-	public String storeFile(MultipartFile file) {
+	public String storeFile(MultipartFile file, String folderContent) {
 		try {
+			Path pathUploadFolder = Files.createDirectories(Paths.get(rootPath + "\\" +folderContent));
 			// check empty
 			if (file.isEmpty())
 				throw new RuntimeException("File rong khong the luu tru");
@@ -61,14 +64,14 @@ public class UploadFileService implements IUploadFileService {
 			String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
 			String generatedFileName = UUID.randomUUID().toString().replace("-", "");
 			generatedFileName = generatedFileName + "." + fileExtension;
-			Path destinationFilePath = this.storageFolder.resolve(Paths.get(generatedFileName)).normalize()
+			Path destinationFilePath = pathUploadFolder.resolve(Paths.get(generatedFileName)).normalize()
 					.toAbsolutePath();
-			if (!destinationFilePath.getParent().equals(this.storageFolder.toAbsolutePath()))
+			if (!destinationFilePath.getParent().equals(pathUploadFolder.toAbsolutePath()))
 				throw new RuntimeException("Khong the luu tru file ben ngoai thu muc hien hanh");
 			try (InputStream inputStream = file.getInputStream()) {
 				Files.copy(inputStream, destinationFilePath, StandardCopyOption.REPLACE_EXISTING);
 			}
-			return SystemConstants.POSTER_CONTENT_STR + generatedFileName;
+			return "/" + folderContent + "/" + generatedFileName;
 		} catch (IOException e) {
 			throw new RuntimeException("Loi luu tru file", e);
 		}
@@ -106,6 +109,20 @@ public class UploadFileService implements IUploadFileService {
 	@Override
 	public void deleteAllFiles() {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void deleteFile(String path) {
+		
+		String prePath = "src/main/resources/static";
+		
+		try {
+			FileUtils.touch(new File(prePath + path));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    File fileToDelete = FileUtils.getFile(prePath + path);
+	    FileUtils.deleteQuietly(fileToDelete);
 	}
 
 }

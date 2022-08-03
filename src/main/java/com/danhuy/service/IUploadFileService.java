@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface IUploadFileService {
 
-	public String storeFile(MultipartFile file);
+	public String storeFile(MultipartFile file, String folderContent);
 	public Stream<Path> loadAll(); // load all files inside a folder
 	/*
 	 * 
@@ -17,4 +17,5 @@ public interface IUploadFileService {
 	 * */
 	public byte[] readFileContent(String fileName);
 	public void deleteAllFiles();
+	public void deleteFile(String path);
 }

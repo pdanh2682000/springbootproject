@@ -1,5 +1,7 @@
 package com.danhuy.converter;
 
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Component;
 
 import com.danhuy.dto.FilmDTO;
@@ -12,6 +14,7 @@ public class CustomFilmConverter {
 		dto.setCategoryId(entity.getCategory().getId());
 		dto.setCategoryCode(entity.getCategory().getCode());
 		dto.setCategoryName(entity.getCategory().getName());
+		dto.setAdvertisesId(entity.getAdvertises().stream().map(e -> e.getId()).collect(Collectors.toList()));
 		return dto;
 	}
 	
@@ -24,6 +27,8 @@ public class CustomFilmConverter {
 		result.setShortDescription(dto.getShortDescription());
 		result.setTitle(dto.getTitle());
 		result.setUrl(dto.getUrl());
+		if(result.getPosterSlide() != null)
+			result.setPosterSlide(dto.getPosterSlide());
 		return result;
 	}
 }

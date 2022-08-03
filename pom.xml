@@ -16,6 +16,10 @@
 	<description>My Project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<lombok.version>1.18.12</lombok.version>
+		<sitemesh.version>3.0.1</sitemesh.version>
+		<modelmapper.version>2.3.0</modelmapper.version>
+		<commonsio.version>2.6</commonsio.version>
 	</properties>
 	<dependencies>
 
@@ -48,7 +52,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.12</version>
+			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -61,7 +65,7 @@
 		<dependency>
 			<groupId>org.sitemesh</groupId>
 			<artifactId>sitemesh</artifactId>
-			<version>3.0.1</version>
+			<version>${sitemesh.version}</version>
 		</dependency>
 
 		<dependency>
@@ -72,7 +76,7 @@
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
-			<version>2.3.0</version>
+			<version>${modelmapper.version}</version>
 		</dependency>
 
 		<dependency>
@@ -81,18 +85,34 @@
 		</dependency>
 
 		<!-- spring security -->
-		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-web</artifactId> 
-			</dependency> <dependency> <groupId>org.springframework.security</groupId> 
-			<artifactId>spring-security-config</artifactId> </dependency> <dependency> 
-			<groupId>org.springframework.security</groupId> <artifactId>spring-security-acl</artifactId> 
-			</dependency> -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-acl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<!-- check is file image -->
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.6</version>
+			<version>${commonsio.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 

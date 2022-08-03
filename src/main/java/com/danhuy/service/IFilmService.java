@@ -1,6 +1,7 @@
 package com.danhuy.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Pageable;
 
@@ -11,8 +12,11 @@ public interface IFilmService {
 	List<FilmDTO> findAll();
 	List<FilmDTO> findAllByPosterSlide(int status);
 	List<FilmDTO> findAll(Pageable pageable);
+	Map<String, String> findAllName();
 	long getTotalItem();
 	FilmDTO save(FilmDTO dto);
 	FilmDTO findById(Long id);
 	void delete(long[] ids);
+	void addFilmRate(String filmId, String starNum);
+	long countQuantityFilmRate(String filmId);
 }

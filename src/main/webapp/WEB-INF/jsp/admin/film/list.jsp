@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/commons/taglib.jsp"%>
-<c:url var="filmAPI" value="/api/film"/>
-<c:url var="filmURL" value="/admin/film/list"/>
+
+<c:url var="FilmAPI" value="/api/film"/>
+<c:url var="FilmURL" value="/admin/film/list"/>
+<c:url var="CreateFilmURL" value="./edit" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,19 +23,17 @@
 			<div class="pull-right tableTools-container">
 				<h1 class="text-center" style="color: yellowgreen;">Films</h1>
 				<div class="dt-buttons btn-overlap btn-group" style="float: right; padding-bottom: 10px;">
-				
-					<c:url var="createFilmURL" value="./edit" />
 					
 					<a flag="info"
 						class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-						data-toggle="tooltip" title='Thêm bài viết' href='${createFilmURL}'>
+						data-toggle="tooltip" title='Thêm film' href='${CreateFilmURL}'>
 						<span> <i class="fa fa-plus-circle bigger-110 purple"></i>
 					</span>
 					</a>
 					<button id="btnDelete" type="button"
 						onclick="warningBeforeDelete()"
 						class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-						data-toggle="tooltip" title='Xóa bài viết' style="border-left: 1px solid white" disabled>
+						data-toggle="tooltip" title='Xóa films' style="border-left: 1px solid white" disabled>
 						<ion-icon name="trash-outline"></ion-icon>
 					</button>
 				</div>
@@ -54,6 +55,8 @@
 					<th>Thời lượng</th>
 					<th>Năm sản xuất</th>
 					<th>Url</th>
+					<th>Trailer</th>
+					<th>Slide</th>
 					<th>Thao tác</th>
 				</tr>
 			</thead>
@@ -71,13 +74,15 @@
 						<td>${item.filmLength}</td>
 						<td>${item.publishDate}</td>
 						<td>${item.url}</td>
+						<td>${item.trailer}</td>
+						<td>${item.posterSlide}</td>
 						<td style="text-align: center;">
 							<c:url var="updateFilmURL" value="./edit">
 								<c:param name="id" value="${item.id}"></c:param>
 							</c:url>
 							<a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-								title="Cập nhật bài viết" href='${updateFilmURL}'> <ion-icon
-									name="create-outline" title="Cập nhật bài viết"></ion-icon>
+								title="Cập nhật film" href='${updateFilmURL}'> <ion-icon
+									name="create-outline" title="Cập nhật user"></ion-icon>
 							</a>
 						</td>
 					</tr>
@@ -89,6 +94,10 @@
 		<input type="hidden" value="" id="limit" name="limit"/>	
 	</div>
 </form>
+<spring:message var="confirmDelete" code="confirm_delete"/>
+<spring:message var="confirmDeleteText" code="confirm_delete_text"/>
+<spring:message var="confirmButtonText" code="confirm_button_text"/>
+<spring:message var="cancelButtonText" code="cancel_button_text"/>
 <script type="text/javascript">
 	var totalPages = ${list_film.totalPage};
 	var currentPage = ${list_film.page};
@@ -114,7 +123,7 @@
     	  if ($("tbody input[type=checkbox]:checked").length > 0)
     	  {
     	      $("#btnDelete").removeAttr('disabled','disabled');
-    	      console.log($("tbody input[type=checkbox]:checked").length);
+    	      // console.log($("tbody input[type=checkbox]:checked").length);
     	  }
     	  else
     	  {
@@ -140,14 +149,14 @@
     
     function warningBeforeDelete() {
 		swal({
-			  title: "Xác nhận xóa",
-			  text: "Bạn có chắc chắn muốn xóa hay không",
+			  title: "${confirmDelete}",
+			  text: "${confirmDeleteText}",
 			  type: "warning",
 			  showCancelButton: true,
 			  confirmButtonClass: "btn-success",
 			  cancelButtonClass: "btn-danger",
-			  confirmButtonText: "Xác nhận",
-			  cancelButtonText: "Hủy bỏ",
+			  confirmButtonText: "${confirmButtonText}",
+			  cancelButtonText: "${cancelButtonText}",
 			}).then(function(isConfirm) {
 			  if (isConfirm.value == true) {
 				  	// get data
@@ -164,15 +173,15 @@
 	
 	function deleteNew(data) {
         $.ajax({
-            url: '${filmAPI}',
+            url: '${FilmAPI}',
             type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (result) {
-            	window.location.href = "${filmURL}?message=delete_film_success&alert=success";
+            	window.location.href = "${FilmURL}?message=delete_film_success&alert=success";
             },
             error: function (error) {
-            	window.location.href = "${filmURL}?message=delete_film_fail&alert=danger";
+            	window.location.href = "${FilmURL}?message=delete_film_fail&alert=danger";
             }
         });
 	}

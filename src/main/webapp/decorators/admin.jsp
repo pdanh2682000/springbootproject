@@ -9,7 +9,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-<title>DanhUy's Movie Admin</title>
+<title><sitemesh:write property='title'/></title>
 <!-- Google Font: Source Sans Pro -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -29,6 +29,18 @@
 <style>
 	form .error {
 		color: yellow;
+	}
+	
+	table th,td {
+		text-align: center;
+	}
+	
+	input[type=radio] {
+		margin-left: 40px;
+	}
+	
+	#myRadioButton label {
+		padding: 10px;
 	}
 </style>
 </head>
@@ -73,5 +85,46 @@
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 	<script src="<c:url value='/templates/paging/jquery.twbsPagination.js'/>"></script>
+		<!-- CKEDITOR -->
+	<script src="<c:url value='/ckeditor/ckeditor.js' />"></script>
+	<script>
+		var menu = '${menu}';
+		$(document).ready(function(){
+			switch(menu){
+				case 'menu_film': {
+				    $("#menu_film").removeClass('active');
+				    $("#menu_film").addClass('active');
+					break;
+				}
+				case 'menu_category': {
+				    $("#menu_category").removeClass('active');
+				    $("#menu_category").addClass('active');
+					break;
+				}
+				case 'menu_role': {
+				    $("#menu_role").removeClass('active');
+				    $("#menu_role").addClass('active');
+					break;
+				}
+				case 'menu_user': {
+				    $("#menu_user").removeClass('active');
+				    $("#menu_user").addClass('active');
+					break;
+				}
+				case 'menu_episode': {
+				    $("#menu_episode").removeClass('active');
+				    $("#menu_episode").addClass('active');
+					break;
+				}
+				case 'menu_advertise': {
+				    $("#menu_advertise").removeClass('active');
+				    $("#menu_advertise").addClass('active');
+					break;
+				}
+			}
+		})
+	
+		
+	</script>
 </body>
 </html>

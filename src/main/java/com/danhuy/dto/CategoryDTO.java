@@ -14,10 +14,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoryDTO extends AbstractDTO<CategoryDTO>{
 	
-	@NotBlank(message = "{}")
-	@NotEmpty(message = "{}")
+	@NotBlank(message = "{blankCode}")
+	@NotEmpty(message = "{emptyCode}")
 	private String code;
-	@NotBlank(message = "{}")
-	@NotEmpty(message = "{}")
+	@NotBlank(message = "{blankName}")
+	@NotEmpty(message = "{emptyName}")
 	private String name;
 }

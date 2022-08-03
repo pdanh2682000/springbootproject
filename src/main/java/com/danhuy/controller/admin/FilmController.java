@@ -1,7 +1,9 @@
 package com.danhuy.controller.admin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.danhuy.constants.SystemConstants;
 import com.danhuy.dto.FilmDTO;
 import com.danhuy.output.OutputResponse;
+import com.danhuy.service.IAdvertiseService;
 import com.danhuy.service.ICategoryService;
 import com.danhuy.service.IFilmService;
 import com.danhuy.service.IUploadFileService;
@@ -35,6 +38,9 @@ public class FilmController {
 
 	@Autowired
 	private IUploadFileService uploadFileService;
+	
+	@Autowired
+	private IAdvertiseService advertiseService;
 
 	@RequestMapping("/admin/film/list")
 	public ModelAndView listAll(@RequestParam(value = "page", required = false) Integer page,
@@ -63,6 +69,7 @@ public class FilmController {
 			if (request.getParameter("message") != null && request.getParameter("alert") != null)
 				MessageUtils.setMessageAndAlertForView(request.getParameter("message"), request.getParameter("alert"),
 						mav);
+			mav.addObject("menu", "menu_film");
 			return mav;
 		} catch (Exception e) {
 			ModelAndView mav = new ModelAndView("redirect:/admin");
@@ -86,6 +93,11 @@ public class FilmController {
 				mav.addObject(filmService.findById(id));
 			}
 			mav.addObject("categories", categoryService.findAll());
+			mav.addObject("advertises", advertiseService.findAllForMap());
+			Map<Integer, String> contentSlide = new HashMap<>();
+			contentSlide.put(SystemConstants.POSTER_SLIDE, SystemConstants.HAVE_POSTER_SLIDE);
+			contentSlide.put(SystemConstants.POSTER_CONTENT, SystemConstants.NO_POSTER_SLIDE);
+			mav.addObject("contentSlide", contentSlide);
 
 			if (request.getParameter("message") != null && request.getParameter("alert") != null)
 				MessageUtils.setMessageAndAlertForView(request.getParameter("message"), request.getParameter("alert"),
@@ -110,6 +122,11 @@ public class FilmController {
 			if (result.hasErrors()) {
 				mav = new ModelAndView("/admin/film/edit");
 				mav.addObject("categories", categoryService.findAll());
+				mav.addObject("advertises", advertiseService.findAllForMap());
+				Map<Integer, String> contentSlide = new HashMap<>();
+				contentSlide.put(SystemConstants.POSTER_SLIDE, SystemConstants.HAVE_POSTER_SLIDE);
+				contentSlide.put(SystemConstants.POSTER_CONTENT, SystemConstants.NO_POSTER_SLIDE);
+				mav.addObject("contentSlide", contentSlide);
 				mav.addObject("message", SystemConstants.BINDING_FILM_ERROR);
 				mav.addObject("alert", SystemConstants.ALERT_DANGER);
 				return mav;
@@ -117,8 +134,20 @@ public class FilmController {
 			
 			// upload file
 			if(file != null && !file.isEmpty()) {
-				String generatedFilename = uploadFileService.storeFile(file);
-				dto.setUrl(generatedFilename);
+				if(dto.getPosterSlide() != null ) {
+					if(dto.getPosterSlide() == 0) {
+						String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
+						dto.setUrl(generatedFilename);
+					}
+					else if(dto.getPosterSlide() == 1) {
+						String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_SLIDE);
+						dto.setUrl(generatedFilename);
+					}
+				}
+				else {
+					String generatedFilename = uploadFileService.storeFile(file, SystemConstants.UPLOAD_POSTER_CONTENT);
+					dto.setUrl(generatedFilename);
+				}
 			}
 			
 			// update

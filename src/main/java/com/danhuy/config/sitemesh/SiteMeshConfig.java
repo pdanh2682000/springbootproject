@@ -24,6 +24,8 @@ public class SiteMeshConfig extends ConfigurableSiteMeshFilter {
 		.addDecoratorPath("/admin*", "/decorators/admin.jsp")
 		// Exclude path from decoration.
 		.addExcludedPath("/login")
+		.addExcludedPath("/signup")
+		.addExcludedPath("/forgot")
 		.addExcludedPath("**/download/*")
 		.addExcludedPath("**/ajax/*")
 		.addExcludedPath("**/api/*")
