@@ -116,6 +116,11 @@
 				    $("#menu_episode").addClass('active');
 					break;
 				}
+				case 'menu_advertise': {
+				    $("#menu_advertise").removeClass('active');
+				    $("#menu_advertise").addClass('active');
+					break;
+				}
 			}
 		})
 	

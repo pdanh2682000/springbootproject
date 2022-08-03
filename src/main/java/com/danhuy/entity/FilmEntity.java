@@ -1,7 +1,10 @@
 package com.danhuy.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -56,6 +59,9 @@ public class FilmEntity extends BaseEntity {
 	
 	@Column(name = "trailer")
 	private String trailer;
+		
+	@Column(name = "premiereDate")
+	private Date premiereDate;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "category_id")
@@ -66,9 +72,15 @@ public class FilmEntity extends BaseEntity {
 									inverseJoinColumns = @JoinColumn(name = "rateid"))
 	private List<RateEntity> rates = new ArrayList<>();
 	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "film_advertise", joinColumns = @JoinColumn(name = "filmid"),
+										inverseJoinColumns = @JoinColumn(name = "advertiseid"))
+	private Set<AdvertiseEntity> advertises = new HashSet<>();
+	
 	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<EpisodeEntity> episodes = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UserCommentFilmEntity> comments = new ArrayList<>();
+	
 }

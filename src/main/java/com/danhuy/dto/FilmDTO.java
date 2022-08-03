@@ -1,9 +1,12 @@
 package com.danhuy.dto;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,4 +49,8 @@ public class FilmDTO extends AbstractDTO<FilmDTO> {
 	private Integer everageRate = 0;
 	// video
 	private List<String> episodesUrl = new ArrayList<>();
+	// advertise
+	private List<Long> advertisesId = new ArrayList<>();
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date premiereDate;
 }

@@ -1,10 +1,12 @@
 package com.danhuy.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.danhuy.converter.CustomFilmConverter;
 import com.danhuy.dto.FilmDTO;
+import com.danhuy.entity.AdvertiseEntity;
 import com.danhuy.entity.CategoryEntity;
 import com.danhuy.entity.EpisodeEntity;
 import com.danhuy.entity.FilmEntity;
 import com.danhuy.entity.RateEntity;
+import com.danhuy.repository.AdvertiseRepository;
 import com.danhuy.repository.CategoryRepository;
 import com.danhuy.repository.FilmRepository;
 import com.danhuy.repository.RateRepository;
@@ -44,6 +48,9 @@ public class FilmService implements IFilmService {
 	
 	@Autowired
 	private IUploadFileService uploadFileService;
+	
+	@Autowired
+	private AdvertiseRepository advertiseRepository;
 	
 	@Override
 	public List<FilmDTO> findAll() {
@@ -126,6 +133,17 @@ public class FilmService implements IFilmService {
 		}
 		if(filmEntity.getPosterSlide() == null)
 			filmEntity.setPosterSlide(0); // default is poster content
+		if(dto.getAdvertisesId() != null) {
+			for(Long advertiseId : dto.getAdvertisesId()) {
+				Optional<AdvertiseEntity> advertiseEntity = advertiseRepository.findById(advertiseId);
+				if(advertiseEntity.isPresent()) {
+					Set<AdvertiseEntity> currentListAdvertise = filmEntity.getAdvertises();
+					currentListAdvertise.add(advertiseEntity.get());
+					filmEntity.setAdvertises(currentListAdvertise);
+				}
+			}
+		}
+		filmEntity.setPremiereDate(new Date(dto.getPremiereDate().getTime()));
 		filmEntity.setCategory(categoryEntity);
 		return mapper.map(filmRepository.save(filmEntity), FilmDTO.class);
 	}

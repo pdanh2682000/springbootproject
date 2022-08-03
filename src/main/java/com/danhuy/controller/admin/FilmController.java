@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.danhuy.constants.SystemConstants;
 import com.danhuy.dto.FilmDTO;
 import com.danhuy.output.OutputResponse;
+import com.danhuy.service.IAdvertiseService;
 import com.danhuy.service.ICategoryService;
 import com.danhuy.service.IFilmService;
 import com.danhuy.service.IUploadFileService;
@@ -37,6 +38,9 @@ public class FilmController {
 
 	@Autowired
 	private IUploadFileService uploadFileService;
+	
+	@Autowired
+	private IAdvertiseService advertiseService;
 
 	@RequestMapping("/admin/film/list")
 	public ModelAndView listAll(@RequestParam(value = "page", required = false) Integer page,
@@ -89,6 +93,7 @@ public class FilmController {
 				mav.addObject(filmService.findById(id));
 			}
 			mav.addObject("categories", categoryService.findAll());
+			mav.addObject("advertises", advertiseService.findAllForMap());
 			Map<Integer, String> contentSlide = new HashMap<>();
 			contentSlide.put(SystemConstants.POSTER_SLIDE, SystemConstants.HAVE_POSTER_SLIDE);
 			contentSlide.put(SystemConstants.POSTER_CONTENT, SystemConstants.NO_POSTER_SLIDE);
@@ -117,6 +122,11 @@ public class FilmController {
 			if (result.hasErrors()) {
 				mav = new ModelAndView("/admin/film/edit");
 				mav.addObject("categories", categoryService.findAll());
+				mav.addObject("advertises", advertiseService.findAllForMap());
+				Map<Integer, String> contentSlide = new HashMap<>();
+				contentSlide.put(SystemConstants.POSTER_SLIDE, SystemConstants.HAVE_POSTER_SLIDE);
+				contentSlide.put(SystemConstants.POSTER_CONTENT, SystemConstants.NO_POSTER_SLIDE);
+				mav.addObject("contentSlide", contentSlide);
 				mav.addObject("message", SystemConstants.BINDING_FILM_ERROR);
 				mav.addObject("alert", SystemConstants.ALERT_DANGER);
 				return mav;

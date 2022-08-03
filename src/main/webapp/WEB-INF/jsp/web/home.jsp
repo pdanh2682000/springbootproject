@@ -387,66 +387,36 @@
 			<!-- .row -->
 
 			<div class="row">
-				<div class="col-md-4">
-					<h2 class="section-title">Phim sắp ra mắt</h2>
-					<p>Những bộ phim bom tấn sắp được công bố.</p>
-					<ul class="movie-schedule">
-						<li>
-							<div class="date">16/12</div>
-							<h2 class="entry-title">
-								<a href="#">Perspiciatis unde omnis</a>
-							</h2>
-						</li>
-						<li>
-							<div class="date">16/12</div>
-							<h2 class="entry-title">
-								<a href="#">Perspiciatis unde omnis</a>
-							</h2>
-						</li>
-
-					</ul>
-					<!-- .movie-schedule -->
-				</div>
-				<div class="col-md-4">
-					<h2 class="section-title">Phim nổi bật trong tháng</h2>
-					<p>Những bộ phim hot nhất tháng.</p>
-					<ul class="movie-schedule">
-						<li>
-							<div class="date">16/12</div>
-							<h2 class="entry-title">
-								<a href="#">Perspiciatis unde omnis</a>
-							</h2>
-						</li>
-						<li>
-							<div class="date">16/12</div>
-							<h2 class="entry-title">
-								<a href="#">Perspiciatis unde omnis</a>
-							</h2>
-						</li>
-
-					</ul>
-					<!-- .movie-schedule -->
-				</div>
-				<div class="col-md-4">
-					<h2 class="section-title">Phim xem nhiều nhất</h2>
-					<p>Những bộ phim nhiều người xem nhiều nhất.</p>
-					<ul class="movie-schedule">
-						<li>
-							<div class="date">16/12</div>
-							<h2 class="entry-title">
-								<a href="#">Perspiciatis unde omnis</a>
-							</h2>
-						</li>
-						<li>
-							<div class="date">16/12</div>
-							<h2 class="entry-title">
-								<a href="#">Perspiciatis unde omnis</a>
-							</h2>
-						</li>
-
-					</ul>
-					<!-- .movie-schedule -->
-				</div>
+			
+				<c:forEach items="${list_advertise}" var="item">
+					<div class="col-md-4">
+						<h2 class="section-title">${item.titleAdvertise}</h2>
+						<p>${item.descriptionAdvertise}</p>
+						<ul class="movie-schedule">
+						
+							<c:forEach items="${item.films}" var="itemFilm">
+								<li>
+									<div class="date premiereDate" id="premiereDate_${item.id}_${itemFilm.id}"></div>
+									<script>
+										var premiereDate = "${itemFilm.premiereDate}";
+										var parsePremiereDate = premiereDate.split(' ')[0].slice(5).split('-');
+										var parsePremiereDateResult = parsePremiereDate[1] + " / " + parsePremiereDate[0];
+										$('#premiereDate_${item.id}_${itemFilm.id}').html(parsePremiereDateResult);
+									</script>
+									<h2 class="entry-title">
+										<a href="/watch/${itemFilm.id}">${itemFilm.title}</a>
+									</h2>
+								</li>
+							</c:forEach>
+							
+							
+	
+						</ul>
+						<!-- .movie-schedule -->
+					</div>
+				</c:forEach>
+			
+				
 			</div>
 		</div>
 	</div>

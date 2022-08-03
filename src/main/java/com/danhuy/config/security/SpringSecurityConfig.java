@@ -52,6 +52,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 								.antMatchers("/admin/film/**").access("hasRole('ROLE_ADMIN_FILM')")
 								.antMatchers("/admin/category/**").access("hasRole('ROLE_ADMIN_FILM')")
 								.antMatchers("/admin/episode/**").access("hasRole('ROLE_ADMIN_FILM')")
+								.antMatchers("/admin/advertise/**").access("hasRole('ROLE_ADMIN_FILM')")
 								.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_ADMIN_USER') and"
 																+ " hasRole('ROLE_ADMIN_FILM')")
 								.antMatchers("/**/pay").access("hasRole('ROLE_USER', 'ROLE_ADMIN')");

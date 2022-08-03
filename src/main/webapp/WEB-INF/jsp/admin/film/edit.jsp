@@ -10,7 +10,14 @@
 <body>
 	<div class="panel panel-primary" style="padding: 20px;">
 		<div class="panel-heading">
-			<h3 class="panel-title" style="color: yellowgreen; padding-bottom: 20px;">Thêm mới Film</h3>
+		
+			<c:if test="${empty filmDTO.id}">
+					<h3 class="panel-title" style="color: yellowgreen; padding-bottom: 20px;">Thêm mới Film</h3>
+			</c:if>
+			<c:if test="${not empty filmDTO.id}">
+					<h3 class="panel-title" style="color: yellowgreen; padding-bottom: 20px;">Cập nhật Film</h3>
+			</c:if>
+		
 		</div>
 		<div class="panel-body">
 			<c:if test="${not empty message}">
@@ -80,10 +87,24 @@
 						id="inputTrailer" placeholder="https://www.youtube.com/embed/..." />
 					<form:errors path="trailer" cssClass="error" />
 				</div>
-				<div class="form-group" id="myRadioButton">
+				<div class="form-group myRadioButton" id="myRadioButton">
 					<form:label path="posterSlide">Poster slide:</form:label>
 					<form:radiobuttons path="posterSlide" items="${contentSlide}"/>  
 					<form:errors path="posterSlide" cssClass="error" />
+				</div>
+				<div class="form-group">
+					<form:label path="advertisesId">Advertise:</form:label>
+					<form:select id="advertisesId" path="advertisesId">
+				  	 	<form:option value="" label="--- Chọn loại advertise ---" />
+				  	 	<form:options items="${advertises}" />
+					</form:select>
+					<form:errors path="advertisesId" cssClass="error" />
+				</div>
+				<div class="form-group">
+					<form:label path="premiereDate">Premiere Date:</form:label>
+					<form:input path="premiereDate" type="date" class="form-control"
+						id="inputPremiereDate" />
+					<form:errors path="premiereDate" cssClass="error" />
 				</div>
 				<form:hidden path="id" id="filmId"/>
 				<c:if test="${not empty filmDTO.id}">
