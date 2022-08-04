@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.danhuy.constants.SystemConstants;
 import com.danhuy.converter.CustomFilmConverter;
 import com.danhuy.dto.FilmDTO;
 import com.danhuy.entity.AdvertiseEntity;
@@ -213,6 +214,42 @@ public class FilmService implements IFilmService {
 		List<FilmEntity> entities = filmRepository.findAll();
 		for(FilmEntity e : entities) {
 			results.put(e.getId().toString(), e.getTitle());
+		}
+		return results;
+	}
+
+	@Override
+	public List<FilmDTO> findAllByTitle(String title) {
+		
+		List<FilmDTO> results = new ArrayList<>();
+		List<FilmEntity> entities = filmRepository.findAllByTitleContaining(title);
+		for(FilmEntity e : entities) {
+			FilmDTO dto = mapper.map(e, FilmDTO.class);
+			if(dto.getPosterSlide() == SystemConstants.POSTER_CONTENT) {
+				// custom convert
+				converter.toDTO(dto, e);
+				dto.setQuantityRate(e.getRates().size());
+				dto.setEverageRate(everageRatePerFilm(e));
+				results.add(dto);
+			}
+		}
+		return results;
+	}
+
+	@Override
+	public List<FilmDTO> findAllByActor(String actor) {
+		
+		List<FilmDTO> results = new ArrayList<>();
+		List<FilmEntity> entities = filmRepository.findAllByActorContaining(actor);
+		for(FilmEntity e : entities) {
+			FilmDTO dto = mapper.map(e, FilmDTO.class);
+			if(dto.getPosterSlide() == SystemConstants.POSTER_CONTENT) {
+				// custom convert
+				converter.toDTO(dto, e);
+				dto.setQuantityRate(e.getRates().size());
+				dto.setEverageRate(everageRatePerFilm(e));
+				results.add(dto);
+			}
 		}
 		return results;
 	}

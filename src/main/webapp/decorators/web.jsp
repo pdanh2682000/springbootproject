@@ -217,6 +217,13 @@ form#algin-form{
 			console.log($('#menuAbout'));
 		}
 	
+		var form = document.getElementById('searchForm');
+		form.addEventListener('submit', function(e) {
+			e.preventDefault();
+			if($('#contentSearchForm').val().length != 0) {
+				form.submit();
+			}
+		});
 	</script>
 </body>
 

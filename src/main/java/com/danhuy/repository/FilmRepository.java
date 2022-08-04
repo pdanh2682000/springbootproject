@@ -9,5 +9,6 @@ import com.danhuy.entity.FilmEntity;
 public interface FilmRepository extends JpaRepository<FilmEntity, Long> {
 	
 	List<FilmEntity> findAllByPosterSlide(int posterSlide);
-	
+	List<FilmEntity> findAllByTitleContaining(String title);
+	List<FilmEntity> findAllByActorContaining(String actor);
 }
