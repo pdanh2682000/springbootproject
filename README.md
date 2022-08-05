@@ -1,11 +1,11 @@
 # springbootproject
 Web xem phim với Spring Boot
- *Technologies used
+ * Technologies used
 - Backend: Spring MVC, Spring Boot, Spring Data JPA, Spring Security, Spring Mail, Lombok, Auditing, Sitemesh Decorator, ModelMapper, Validated,
            Spring Form, Spring Message, Message for locale, Message for validated,...
 - Frontend: Boostrap, JQuery, Ajax, ...
 - JSP template engine
- *Main function
+ * Main function
 - Signin / Signup
 - Forgot password with send email
 - Upload file(image, video)
