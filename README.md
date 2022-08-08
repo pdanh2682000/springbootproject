@@ -5,6 +5,7 @@ Web xem phim với Spring Boot
            Spring Form, Spring Message, Message for locale, Message for validated,...
 - Frontend: Boostrap, JQuery, Ajax, ...
 - JSP template engine
+- Database: MySQL
 # Main function
 - Signin / Signup
 - User Profile
