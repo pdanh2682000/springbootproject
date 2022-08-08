@@ -7,8 +7,22 @@ Web xem phim với Spring Boot
 - JSP template engine
  * Main function
 - Signin / Signup
+- User Profile
 - Forgot password with send email
 - Upload file(image, video)
+- Show infomation for movies with modal
+- Watch trailer with modal
+- Rating film
+- Watch movies by episode
+- Comment film
+- Zoom in / light mode / auto next when watch movies
+- Show movies by theme
+- Search movies by name or actor
+- Admin management page (manager films, manager category, manager episode, manager user,...)
+- Role-based user authorization. Ex: 'ROLE_FILM' only managed functions for films, category, epsisode
+- Each management function has show, create, update, delete ,find, ...
+- Logout
+- More functions as: show message for locale, confirm when delete, validated from input,... 
 
 ![2022-08-03 (1)](https://user-images.githubusercontent.com/82626385/182619485-0ac4b089-3d00-4cb3-b3b3-50e8acd88002.png)
 Poster Film
