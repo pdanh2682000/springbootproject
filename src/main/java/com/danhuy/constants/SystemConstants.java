@@ -67,6 +67,9 @@ public final class SystemConstants {
 	public static final String EMAIL_NOT_FOUND = "email_not_found";
 	public static final String USER_NOT_FOUND = "user_not_found";
 	
+	public static final String BINDING_ADVERTISE_ERROR = "advertise_binding_error";
+	public static final String CREATE_ADVERTISE_SUCCESS = "create_advertise_success";
+	public static final String EDIT_ADVERTISE_FAIL = "edit_advertise_fail";
 	
 	public static final String ALERT_DANGER = "danger";
 	public static final String ALERT_SUCCESS = "success";

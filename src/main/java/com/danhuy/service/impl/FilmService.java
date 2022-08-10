@@ -144,7 +144,8 @@ public class FilmService implements IFilmService {
 				}
 			}
 		}
-		filmEntity.setPremiereDate(new Date(dto.getPremiereDate().getTime()));
+		if(dto.getPremiereDate() != null)
+			filmEntity.setPremiereDate(new Date(dto.getPremiereDate().getTime()));
 		filmEntity.setCategory(categoryEntity);
 		return mapper.map(filmRepository.save(filmEntity), FilmDTO.class);
 	}
