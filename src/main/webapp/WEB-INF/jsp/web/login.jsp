@@ -23,6 +23,7 @@
 		<div class="card">
 			<div class="card-header">
 				<h3>Sign In</h3>
+				<a href="/oauth2/authorization/google" class="btn btn-danger btn-block"><i class="fa fa-google"></i> Sign in with <b>Google</b></a>
 				<div class="d-flex justify-content-end social_icon">
 					<a href="/"><span><i class="fa fa-home" aria-hidden="true"></i></span></a>
 					<span><i class="fab fa-facebook-square"></i></span>

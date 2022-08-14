@@ -103,7 +103,7 @@
 				<div class="form-group">
 					<form:label path="premiereDate">Premiere Date:</form:label>
 					<form:input path="premiereDate" type="date" class="form-control"
-						id="inputPremiereDate" />
+						id="inputPremiereDate" disabled="true"/>
 					<form:errors path="premiereDate" cssClass="error" />
 				</div>
 				<form:hidden path="id" id="filmId"/>
@@ -126,6 +126,13 @@
 		editor = CKEDITOR.replace('content');
 	});
 	$('#messageAndAlert').fadeOut(5000);
+	
+	$('#advertisesId').change(function () {
+		$("#inputPremiereDate").prop('disabled', false);
+		if($("#advertisesId").val() == "")
+			$("#inputPremiereDate").prop('disabled', true);
+		$("#inputPremiereDate").prop('required', true);
+	 });
 </script>
 </body>
 </html>

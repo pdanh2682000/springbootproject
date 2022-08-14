@@ -8,7 +8,8 @@
 <title>DanhUy's Movie</title>
 </head>
 <body>
-
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v14.0" nonce="ffVe5AsC"></script>
 	<div class="container">
 		<div class="page">
 			<div class="row">
@@ -217,6 +218,7 @@
 													<iframe class="embed-responsive-item myVideoClass"
 														src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
 												</div>
+												
 											</div>
 											<div class="modal-footer">
 												<button type="button"
@@ -365,6 +367,7 @@
 												<iframe class="embed-responsive-item myVideoClass"
 													src="${poster.trailer}"></iframe>
 											</div>
+											<div class="fb-comments" data-href="https://crimectu2021.herokuapp.com/" data-width="450" data-numposts="5"></div>
 										</div>
 										<div class="modal-footer">
 											<button type="button"

@@ -12,6 +12,8 @@ public interface IFilmService {
 	List<FilmDTO> findAll();
 	List<FilmDTO> findAllByPosterSlide(int status);
 	List<FilmDTO> findAll(Pageable pageable);
+	List<FilmDTO> findAllByTitle(String title);
+	List<FilmDTO> findAllByActor(String actor);
 	Map<String, String> findAllName();
 	long getTotalItem();
 	FilmDTO save(FilmDTO dto);

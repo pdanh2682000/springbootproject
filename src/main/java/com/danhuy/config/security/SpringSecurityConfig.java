@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.danhuy.config.oauth2.CustomerOAuth2UserService;
+
 @SuppressWarnings("deprecation")
 @Configuration
 @EnableWebSecurity
@@ -20,6 +22,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
+	
+	@Autowired
+	private CustomerOAuth2UserService oAuth2UserService;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -36,7 +41,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http.formLogin().loginPage("/login").loginProcessingUrl("/j_spring_security_check")
 			.usernameParameter("username")
-			.passwordParameter("password");
+			.passwordParameter("password")
+			.and()
+			.oauth2Login()
+			.loginPage("/login")
+			.userInfoEndpoint()
+			.userService(oAuth2UserService);
 		
 		http.formLogin().defaultSuccessUrl("/")
 						.failureUrl("/login?error");
@@ -64,4 +74,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers("/static/**");
 	}
+	
 }

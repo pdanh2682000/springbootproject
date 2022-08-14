@@ -40,5 +40,18 @@ public class AdvertiseService implements IAdvertiseService {
 		return advertiseRepository.findAll().stream().collect(Collectors.toMap(AdvertiseEntity::getId, AdvertiseEntity::getTitleAdvertise));
 	}
 
+	@Override
+	public AdvertiseDTO save(AdvertiseDTO dto) {
+		
+		AdvertiseEntity entity = mapper.map(dto, AdvertiseEntity.class);
+		return mapper.map(advertiseRepository.save(entity), AdvertiseDTO.class);
+	}
+
+	@Override
+	public List<AdvertiseDTO> findAllBySortDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

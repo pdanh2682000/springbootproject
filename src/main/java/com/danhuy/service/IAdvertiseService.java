@@ -8,5 +8,7 @@ import com.danhuy.dto.AdvertiseDTO;
 public interface IAdvertiseService {
 
 	List<AdvertiseDTO> findAll();
+	List<AdvertiseDTO> findAllBySortDate();
 	Map<Long, String> findAllForMap();
+	AdvertiseDTO save(AdvertiseDTO dto);
 }

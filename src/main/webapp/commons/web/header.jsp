@@ -40,8 +40,8 @@
 			</ul>
 			<!-- .menu -->
 
-			<form action="#" class="search-form">
-				<input type="text" placeholder="Search...">
+			<form action="/search" class="search-form" id="searchForm">
+				<input type="text" name="searchKey" id="contentSearchForm" placeholder="Tên phim hoặc Diễn viên">
 				<button>
 					<i class="fa fa-search"></i>
 				</button>
