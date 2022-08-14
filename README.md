@@ -25,6 +25,7 @@ Web xem phim với Spring Boot
 - Each management function has show, create, update, delete ,find, ...
 - Logout
 - More functions as: show message for locale, confirm when delete, validated from input,... 
+- Sign in with Google account (basic OAuth2 - learning more)
 
 ![2022-08-03 (1)](https://user-images.githubusercontent.com/82626385/182619485-0ac4b089-3d00-4cb3-b3b3-50e8acd88002.png)
 Poster Film
@@ -39,4 +40,7 @@ Dashboard Admin
 ![2022-08-03 (6)](https://user-images.githubusercontent.com/82626385/182619985-e97192b2-5af7-4e8a-babc-1f0ba7bfb3b3.png)
 Comment Facebook
 ![image](https://user-images.githubusercontent.com/82626385/183893145-598ddc31-5b2a-4bc0-b038-287ce52cc41d.png)
+Sign in with Google 
+![image](https://user-images.githubusercontent.com/82626385/184540551-d7297c62-0407-4eae-9763-71e6b3a1fa1d.png)
+
 
